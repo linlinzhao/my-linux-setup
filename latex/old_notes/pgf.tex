@@ -1,0 +1,195 @@
+\documentclass[paper=a4, fontsize=12pt]{scrartcl}	% Article class of KOMA-script with 11pt font and a4 format
+
+\usepackage[english]{babel}								% English language/hyphenation
+\usepackage[protrusion=true,expansion=true]{microtype}				% Better typography
+\usepackage{amsmath,amsfonts,amsthm}						% Math packages
+\usepackage[pdftex]{graphicx}							% Enable pdflatex
+\usepackage{color,transparent}							% If you use color and/or transparency
+\usepackage[hang, small,labelfont=bf,up,textfont=it,up]{caption}			% Custom captions under/above floats
+\usepackage{epstopdf}								% Converts .eps to .pdf
+\usepackage{subfig}									% Subfigures
+\usepackage{booktabs}								% Nicer tables
+\usepackage{amssymb,amstext}
+
+%%% Advanced verbatim environment
+\usepackage{verbatim}
+\usepackage{fancyvrb}
+\DefineShortVerb{\|}							            	% delimiter to display inline verbatim text
+
+\usepackage[svgnames]{xcolor}
+\definecolor{lightgray}{gray}{0.95}
+\definecolor{quoteColor}{gray}{0.15}
+
+\usepackage{libertine}
+\usepackage{framed}
+\usepackage{lipsum}
+\newcommand*\openquote{\makebox(0,-45){\scalebox{5}{``}}}
+\newcommand*\closequote{\makebox(0, -5){\scalebox{5}{''}}}
+\colorlet{shadecolor}{lightgray}
+
+\makeatletter
+\renewenvironment{snugshade}{%
+  \def\FrameCommand##1{\hskip\@totalleftmargin \hskip-\fboxsep 
+  \colorbox{shadecolor}{##1}\hskip-\fboxsep
+      % There is no \@totalrightmargin, so:
+      \hskip-\linewidth \hskip-\@totalleftmargin \hskip\columnwidth}%
+  \MakeFramed {\advance\hsize-\width
+    \advance\hsize-2\fboxsep %%%%%%%%%%%%% <------ ADDED
+    \@totalleftmargin\z@ \linewidth\hsize
+    \@setminipage}%
+ }{\par\unskip\@minipagefalse\endMakeFramed}
+
+\newif\if@right
+\def\shadequote{\@righttrue\shadequote@i}
+\def\shadequote@i{\begin{snugshade}\begin{quote}\openquote}
+\def\endshadequote{%
+  \if@right\hfill\fi\closequote\end{quote}\end{snugshade}}
+\@namedef{shadequote*}{\@rightfalse\shadequote@i}
+\@namedef{endshadequote*}{\endshadequote}
+\makeatother
+
+
+%%% Custom sectioning (sectsty package)
+\usepackage{sectsty}								           % Custom sectioning (see below)
+\allsectionsfont{%								          % Change font of all section commands
+	\usefont{OT1}{bch}{b}{n}%					                      % bch-b-n: CharterBT-Bold font
+%	\hspace{15pt}%							          % Uncomment for indentation
+	}
+
+\sectionfont{%									% Change font of \section command
+	\usefont{OT1}{bch}{b}{n}%							% bch-b-n: CharterBT-Bold font
+	\sectionrule{0pt}{0pt}{-5pt}{0.8pt}%					% Horizontal rule below section
+	}
+
+
+%%% Custom headers/footers (fancyhdr package)
+\usepackage{fancyhdr}
+\pagestyle{fancyplain}
+\fancyhead{}										% No page header
+\fancyfoot[C]{\thepage}								% Pagenumbering at center of footer
+%\fancyfoot[R]{\small \texttt{HowToTeX.com}}					% You can remove/edit this line 
+\renewcommand{\headrulewidth}{0pt}				% Remove header underlines
+\renewcommand{\footrulewidth}{0pt}				% Remove footer underlines
+\setlength{\headheight}{13.6pt}
+
+%%% Equation and float numbering
+%\numberwithin{equation}{section}					% Equationnumbering: section.eq#
+%\numberwithin{figure}{section}					% Figurenumbering: section.fig#
+%\numberwithin{table}{section}					% Tablenumbering: section.tab#
+
+
+%%% Title	
+\title{ \vspace{-1in} 	\usefont{OT1}{bch}{b}{n}
+		\huge \strut Review on Neural Network: from Frequestist to Bayesian \strut \\
+		\Large \bfseries \strut \strut
+}
+\author{ 									\usefont{OT1}{bch}{m}{n}
+        Linlin Zhao\\		\usefont{OT1}{bch}{m}{n}
+   %     \\	\usefont{OT1}{bch}{m}{n}
+        \texttt{linlin.zhao@hhu.de}
+}
+\date{}
+
+%%% Begin document
+\begin{document}
+%\maketitle
+
+Master equation is
+\begin{equation}
+\partial_t p(n, t)=\beta T(t)\big(p(n-1, t)-p(n, t)\big)-\lambda np(n, t) + \lambda (n+1)p(n+1, t)\label{M}.
+\end{equation}
+The probability generating function (stationary) arising from \eqref{M} is
+\begin{equation}
+G(s)=e^{a(s-1)^2}=\sum_n s^np(n)\label{G}. 
+\end{equation}
+The aim is to obtain the probability sequence $\{ p(n)\}$. We start with two methods.
+\\
+
+1. {\bf{\it Use generating function of Hermite polynomials}}
+\\
+
+As shown on the website, by changing of variables of the generating function of Hermite polynomials, we have 
+\begin{equation}
+p(n) = e^{-\alpha^2} \frac{\alpha^n}{n!} H_n(\alpha)\label{p}
+\end{equation}
+with $a=-\alpha^2$ and $H_n(\alpha)$ the Hermite polynomial.
+
+For the sake of comparison, we write the first four terms of $p(n)$. 
+\begin{align}
+&p(0) = e^{-\alpha^2} = e^a\\
+&p(1) = 2\alpha^2 e^{-\alpha^2}=-2ae^a\\
+&p(2) = (2\alpha^4-\alpha^2) e^{-\alpha^2}=(2a^2+a)e^a\\
+&p(3) = (\frac{4}{3}\alpha^6-2\alpha^4) e^{-\alpha^2}=(-\frac{4}{3}a^3-2a^2) e^{-\alpha^2}
+\end{align}
+Since parameter $a$ is always positive, the odd terms in the sequence $\{p(n)\}$ are negative. \\
+
+
+2. {\bf{\it Use Taylor expansion}}
+\\
+
+Since $p(k)=\frac{G^{(k)}(0)}{k!}$, we Taylor expand the generating function at point zero and calculate the first four terms. The results are exactly the same as the results from using generating function of Hermite polynomial. The calculating procedure is neglected here. Thus we know that \eqref{p} is the right unique solution of \eqref{G}.\\
+
+3. {\bf{\it The problem and its possible reasons}}
+\\
+
+The negative odd terms make the sequence $\{p(n)\}$ an improper probability distribution. From the procedure of solving the partial differential equation of $G(s, t)$ corresponding to the original master equation \eqref{M}, one more term can be safely added to the stationary generating function \eqref{G} then it becomes
+\begin{equation}
+G(s) = e^{\beta(s-1)+a(s-1)^2}\label{Gn}
+\end{equation}
+Again, it is easy to calculate the first four terms of the Taylor expansion (at point $s=0$) of \eqref{Gn}, which give rise to 
+
+\begin{align}
+&p(0) = e^{a-\beta}\\
+&p(1) =(\beta-2a)e^{a-\beta}\\
+&p(2) = \big((\beta -2a)^2+2a\big)e^{a-\beta}/2!\\
+&p(3) = \big((\beta -2a)^3+3(\beta-2a)2a\big)e^{a-\beta}/3!\\
+&\vdots
+\end{align}
+It can be easily observed the condition ($\beta>2a$) makes all terms positive such that $\{p(n)\}$ becomes a proper probability distribution. Previously we obtain
+\begin{equation}
+a=\frac{\sigma\beta^2}{2\lambda(\lambda+m)},
+\end{equation}
+thus condition $\beta>2a$ becomes
+\begin{equation}
+\lambda(\lambda+m)>\sigma\beta,
+\end{equation}
+or
+\begin{equation}
+\frac{\lambda(\lambda+m)}{\beta}>\sigma.
+\end{equation}
+One would reasonably guess that the transformation from \eqref{Gn} to $\{p(n)\}$ could also be generalized by the Hermite polynomials. 
+
+We have the generating function
+\begin{equation}
+e^{-t^2+2xt}=\sum_0^\infty H_n(x)\frac{t^n}{n!}.
+\end{equation}
+
+By changing variables $a=-\alpha^2$, $t=\alpha s$ and $x=\frac{\beta+2\alpha^2}{2\alpha}$, the generating function \eqref{Gn} can be rewritten as 
+\begin{equation}
+e^{\beta(s-1)+a(s-1)^2}=e^{a-\beta}e^{-\alpha^2s^2+(b+2\alpha^2)s}=e^{a-\beta}e^{-t^2+2xt}=e^{a-\beta}\sum_0^\infty H_n(x)\frac{t^n}{n!},
+\end{equation}
+Therefore
+\begin{equation}
+G(s, t)=e^{a-\beta}\sum_0^\infty H_n(\frac{\beta+2\alpha^2}{2\alpha})\frac{(\alpha s)^n}{n!}=\sum_0^\infty s^np(n)
+\end{equation}
+\begin{equation}
+p(n)=e^{a-\beta}\frac{\alpha^n}{n!}H_n(\frac{\beta+2\alpha^2}{2\alpha}).
+\end{equation}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}

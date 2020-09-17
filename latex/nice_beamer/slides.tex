@@ -1,0 +1,149 @@
+\documentclass[xcolor=svgnames,handout]{beamer}
+
+\usepackage[utf8]    {inputenc}
+\usepackage[T1]      {fontenc}
+\usepackage[english] {babel}
+
+
+\usepackage{amsmath,amsfonts,graphicx}
+\usepackage{beamerleanprogress}
+
+
+\title
+  [Hacking S\hspace{2em}]
+  {My presentation}
+
+\author
+  [Linlin Zhao]
+  {Linlin Zhao}
+
+\date
+  %{April 01, 2011}
+
+\institute
+  {My cool place}
+
+
+\begin{document}
+
+\maketitle
+
+\section{Project Statement}
+
+\begin{frame}{Project Statement}
+
+
+
+  %\begin{itemize}
+  %\item{Church Science Data}\\
+  %      \begin{itemize}
+  %      \item 2 promoter$\times$ 4 RBS $\times$ 137 Genes $\times$ 13 codon variants
+  %      \end{itemize}
+        
+  %\item{ Church PNAS Data}\\
+  %\item{ Bacteria Genome}\\
+  %\end{itemize}
+\end{frame}
+
+
+
+\section{Results-idea I}
+  
+\begin{frame}{First Ideas}
+    \begin{itemize}
+    \item {\it Idea I} stands for: based on the following features, using CNN to classify high and low expression with different cut-off rates. 
+    \item $6\times60$ position-based features
+        \begin{itemize}
+        \item gap2, gap4, gap8, gap16
+        \item binding energy
+        \item motif matching score
+        \end{itemize}
+    \item{To exclude the strong influence from promoter, only samples with High-promoter is in use.}
+    \item Target: 
+        \begin{itemize}
+        \item Divide Prot.FCC into high and low two classes. For each gene, the protein level is normalized to its averaged codon variants.
+        \item Divide Trans into high and low two classes, which is the protein levels normalized by RNA level. 
+        \end{itemize}
+    
+    
+    
+    \end{itemize}
+
+
+
+\end{frame}
+
+\begin{frame}{CNN model - configurations}
+\begin{itemize}
+\item Network structure:
+    \begin{itemize}
+    \item Two convolutional layers with maxpooling + a dense layer + a softmax layer
+    \item nkerns=[2, 4], filter shape for the first convlayer is [6, 7], for the second convlayer [1, 6], 120 hidden nodes for dense layer
+    \end{itemize}
+\item Hypoparameters:
+
+$epoch=1000,\ learningRate = 0.08,\ L2reg=0.008, \ batchsize=200$
+\end{itemize}
+
+
+\end{frame}
+  
+ \begin{frame}{Prot.FCC}
+  Prot.FCC is the protein level normalized to each gene's codon variant average. By its definition, it is not suitable to be our target since it mainly counts for codons bias. 
+  %\begin{figure}
+  %\centering
+  %\includegraphics[scale=0.5]{protFCC.png}
+  %\end{figure}
+ \end{frame}
+  
+  \begin{frame}{Trans normalized by median}
+  
+  \begin{itemize}
+  \item Convert 'Trans' in SciData to fold changes. Trans are normalized by the median.
+    \begin{equation}
+    Expession=\log_2\frac{Trans}{median(Trans)}
+    \end{equation}
+  \end{itemize}
+  %\begin{figure}[t]
+   % \centering
+    %\includegraphics[scale=0.5]{TransDistrb}
+    %\caption{Kissing ducks}
+  %\end{figure}
+  
+  \end{frame}
+\begin{frame}{Trans normalized by median}
+Run CNN for 50 times, plot the averaged performance with error bars
+  %\begin{figure}[t]
+   % \centering
+    %\includegraphics[scale=0.5]{cnn_trans_median}
+    %\caption{Kissing ducks}
+  %\end{figure}
+
+\end{frame}
+
+
+\begin{frame}{Trans normalized by mean}
+ \begin{itemize}
+  \item Convert 'Trans' in SciData to fold changes. Trans are normalized by the mean.
+    \begin{equation}
+    Expession=\log_2\frac{Trans}{mean(Trans)}
+    \end{equation}
+  \end{itemize}
+  %\begin{figure}[t]
+   % \centering
+    %\includegraphics[scale=0.5]{dist_trans_mean}
+    %\caption{Kissing ducks}
+  %\end{figure}
+\end{frame}
+
+\begin{frame}
+  {Questions}
+
+  \nocite{lorem,ipsum}
+  \bibliographystyle{plain}
+  \bibliography{demo}
+
+\end{frame}
+
+\end{document}
+

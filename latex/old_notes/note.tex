@@ -1,0 +1,266 @@
+\documentclass[paper=a4, fontsize=12pt]{scrartcl}	% Article class of KOMA-script with 11pt font and a4 format
+
+\usepackage[english]{babel}								% English language/hyphenation
+\usepackage[protrusion=true,expansion=true]{microtype}				% Better typography
+\usepackage{amsmath,amsfonts,amsthm}						% Math packages
+\usepackage[pdftex]{graphicx}							% Enable pdflatex
+\usepackage{color,transparent, xcolor}							% If you use color and/or transparency
+\usepackage[hang, small,labelfont=bf,up,textfont=it,up]{caption}			% Custom captions under/above floats
+\usepackage{epstopdf}								% Converts .eps to .pdf
+\usepackage{subfig}									% Subfigures
+\usepackage{booktabs}								% Nicer tables
+\usepackage{amssymb,amstext}
+\usepackage{gensymb}
+\usepackage{hyperref}
+\usepackage{float}
+
+%\usepackage{wsuipa}
+
+%%% Advanced verbatim environment
+\usepackage{verbatim}
+\usepackage{fancyvrb}
+\DefineShortVerb{\|}							            	% delimiter to display inline verbatim text
+
+
+%%% Custom sectioning (sectsty package)
+\usepackage{sectsty}								           % Custom sectioning (see below)
+\allsectionsfont{%								          % Change font of all section commands
+	\usefont{OT1}{bch}{b}{n}%					                      % bch-b-n: CharterBT-Bold font
+%	\hspace{15pt}%							          % Uncomment for indentation
+	}
+
+\sectionfont{%									% Change font of \section command
+	\usefont{OT1}{bch}{b}{n}%							% bch-b-n: CharterBT-Bold font
+	\sectionrule{0pt}{0pt}{-5pt}{0.8pt}%					% Horizontal rule below section
+	}
+
+
+%%% Custom headers/footers (fancyhdr package)
+\usepackage{fancyhdr}
+\pagestyle{fancyplain}
+\fancyhead{}										% No page header
+\fancyfoot[C]{\thepage}								% Pagenumbering at center of footer
+%\fancyfoot[R]{\small \texttt{HowToTeX.com}}					% You can remove/edit this line 
+\renewcommand{\headrulewidth}{0pt}				% Remove header underlines
+\renewcommand{\footrulewidth}{0pt}				% Remove footer underlines
+\setlength{\headheight}{13.6pt}
+
+%%% Equation and float numbering
+
+\numberwithin{equation}{section}					% Equationnumbering: section.eq#
+\numberwithin{figure}{section}					% Figurenumbering: section.fig#
+\numberwithin{table}{section}					% Tablenumbering: section.tab#
+%%% Title	
+\title{ \vspace{-1in} 	\usefont{OT1}{bch}{b}{n}
+		\huge \strut A note on the machine learning for flowering time decision \strut \\
+		\Large \bfseries \strut \strut
+}
+\author{ 									\usefont{OT1}{bch}{m}{n}
+        Linlin Zhao\\		\usefont{OT1}{bch}{m}{n}
+   %     \\	\usefont{OT1}{bch}{m}{n}
+        \texttt{linlin.zhao@hhu.de}
+}
+\date{}
+
+
+%%% Begin document
+\begin{document}
+\maketitle
+
+Timing of biological events (like flowering) is crucial for the survival and development of living systems, especially for plants. In this work, we intend to understand the flowering-time decision strategy in plants by extracting available information from temperature and photoperiod which are two key environmental factors. 
+
+As well-known by plant biology community, gene \emph{FT} acting as the converging point of information from both temperature and photoperiod expresses the key component of flowering signal which promotes flowering when its concentration in the shoot apical meristem achieves a certain threshold. The main inhibitor of FT, gene \emph{FLC}, can be turned off by a natural process called vernalization, of which the underlying mechanism is an epigenetic switch which processes the information of long term temperature. The activator of FT usually incorporates information from photoperiod. Take long-day plants as an example, when the day length is long enough, CO which processes the information of photoperiod promotes the accumulation of FT. Moreover, several other genes are also involved in the flowering regulatory network for determining the suitable ambient temperature such as FLM. 
+
+Due to various environmental conditions, different plant species and even subspecies have evolved their own unique gene regulatory networks for making optimal decisions to achieve the maximal fitness. Luckily these gene regulatory networks normally share similar information process mechanisms. Our primary goal therefore is to understand how plants make optimal flowering decisions according to different habitats using machine learning techniques. 
+Plants have to adapt to different local environments and climates, therefore we obtained temperature and photoperiod data for several different places around the world from NOAA (\url{http://www.ncdc.noaa.gov/}) and \url{http://ptaff.ca/soleil/?lang=en_CA} respectively. Selected regions or cities: 
+
+\begin{itemize}
+\item Cold region: Norway
+\item Cities with seasonal changes: Beijing, Cologne, Pittsburgh
+\item Cities with high temperature and less seasonal changes: Phoenix, Hawaii, San Francisco
+\end{itemize}
+
+It is firstly shown that the neural network as a binary classifier can precisely identify a particular period out of a year such as the most probable flowering month April for Cologne. In order to be more realistic, we fit FLC- and FT-like curves using both temperature and photoperiod data or merely temperature data or photoperiod data. 
+\section{Data preparation}
+Let us take San Francisco as an example to illustrate our data preparation. The customized CSV data file from NOAA includes recordings of daily maximal and minimal temperatures of 57 stations in San Francisco. Each row of the dataset corresponds to one day and contains the name of the station, the date, the daily maximum and minimum. Each station independently recorded daily temperature for tens of years. Therefore it is reasonable to consider the recordings in the same year but at different stations as distinct. Following this assumption, we have over 300 years of daily temperatures which would be sufficient for training. There are a lot of "holes" in the data: many dates are missing, for example, 21th and 22th were not recorded in January then the data jumped from 20th Jan. to 23th Jan.. Another problem is that either the maximal or minimal temperatures of many dates are missing and the missing data are replaced as "-9999". In order to solve these problems and for the simplicity of dealing with data, following adaptations are made for the whole data set:
+\begin{itemize}
+\item Each year is modified to 360 days and each month is modified to 30 days;
+\item We fill the holes automatically by averaging neighbouring two days or just copying the neighbouring date if the hole is less than 10 days. For holes larger than 10 days, the program will locate them and remind the user to fill the holes manually;
+\item For the data points which are "-9999", neighbouring days are also used automatically to replace them if the number of consecutive "-9999" is less than 5, otherwise the user has to change the data manually. 
+\end{itemize}
+Due to the bad quality(e.g. too many holes, too large holes or too many "-9999"), data of some stations are removed and finally about 165 years of temperature data from San Francisco are available for training. 
+
+The photoperiod data preparation is relatively easier. The daily photoperiod variation data of San Francisco are downloaded from \url{http://ptaff.ca}. The orbit of earth around sun is very stable such that the photoperiod variation remains the same from year to year. Thus we just replicate the downloaded year to 165 years. On the other hand, in reality the effective photoperiod is influenced by weather conditions. To this end, different Gaussian noises are added to different years. And the strength of noise is adjustable. 
+
+The same preparation has been applied to other cities. Now we can apply these data to train neural networks. 
+
+\section{Network Training}
+\subsection{Binary Classifier}
+The vernalization mechanism in plants requires a long term memory of cold temperature, namely several weeks. The required memory length may depend on local climate or species types. But we are interested in the quantitative memory length from the pointview of information, i.e. in a particular location, how many days of temperature are needed for identifying a particular period of a year. To this end, we set up the neural network as binary classifier to find the approximate memory length. 
+
+Cologne as a temperate city was selected as the target, which has 110 years of temperature data available. The input features for the neural network are $(x_{l1}, \cdots, x_{lk}, x_{h1},\cdots, x_{hk})$, $k=30, 40, 60$ where $x_{li}$ and $x_{hi}$, $i=1,\cdots, k$, stand for daily lowest and highest temperatures respectively. Since it is a binary classification, within one year the output label is $(0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0)$ for $k=30$, $(0, 0, 1, 0, 0, 0, 0, 0, 0)$ for $k=40$ and $(0, 1, 0, 0, 0, 0)$ for $k=60$. 90 years out of 110 years has been taken for network training and the rest for network predicting. The predicting results are shown in figure~\ref{fig: day30},~\ref{fig: day40} and ~\ref{fig: day60}. It is observed that one month of temperatures as input features is insufficient for classifying the desired period out of a year. As the number of input features increases to 40 or more, the neural network can make very precise predictions. 
+
+\begin{figure}[H]
+\centering
+\includegraphics[scale = 0.4]{confusion28daysTrainscg.pdf}
+\caption{The misclassification rate based on one month of temperature is 44\%. The number of input feature is insufficient to classify the desired period.}
+\label{fig: day30}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[scale = 0.4]{confusion42daysTrainscg.pdf}
+\caption{By increasing input days the accuracy is significantly improved. Accuracy based on 40 days is 93.6\%.}
+\label{fig: day40}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[scale = 0.4]{confusion60daysTrainscg.pdf}
+\caption{As input days are increasing, the accuracy remains high. Here shows the accuracy based on 60days.}
+\label{fig: day60}
+\end{figure}
+
+
+\subsection{Curve Fitting}
+The binary classification results agree with biological fact that the vernalization process requires about 6 weeks of cold temperature. Now we move a step further using the neural network to fit FT- and FLC-like curves for different cities. In the binary classification, we just equally divide one year into 12 months or else. However this is not realistic since plants cannot jump from one month to the next. Therefore the input features are organized as
+\begin{equation*}
+\begin{pmatrix}
+x_{1} & x_{1+m} & x_{1+2m} & \cdots\\
+x_{2} & x_{2+m} & x_{2+2m} & \cdots\\
+\vdots & \vdots & \vdots & \cdots\\
+x_n & x_{n+m} & x_{n + 2m} & \cdots
+\end{pmatrix},
+\end{equation*}
+where $n$ is the number of input features and $m$ is the number of new features comparing to the previous column. Correspondingly, the output label associated with each column is constructed according to the real changes of FT and FLC in vernalization-required Arabidopsis. The FT- and FLC-like curves are shown in figure \ref{fig:ftflc}. 
+
+\begin{figure}[H]
+\centering
+\includegraphics{FTFLC.pdf}
+\caption{The idealized expression levels of FLC and FT}
+\label{fig:ftflc}
+\end{figure}
+
+1. Temperate Cities
+
+Now the data setup is ready for training the neural networks. We typically choose $n=40$, $m=1$ for temperature and $n=1, 2, 3$, $m=1$ for photoperiod of temperate cities: Cologne, Pittsburgh, Beijing. Long term memory of temperature plays a key role in the curve fitting however it is observed that only temperatures as input features in Cologne and Pittsburgh leads to some significant misfits. But adding one or three days of photoperiod variations can dramatically reduce the misfits. 
+
+\begin{figure}[H]
+\centering
+\includegraphics[scale = 0.7]{CologneT90-br.pdf}
+\caption{Cologne: 90 years of temperature of Cologne are used for training with setup of $n=40$, $m=1$, i.e. 40 days of temperature as input features. Here shows the predictions for 5 different year: a). Temperature as the only input feature gives a very noisy but approximate fitting. b). Due to temperature similarity between spring and autumn, in each year, except spring, autumn leads to noisy local minimum.}
+\label{fig:cologneT}
+\end{figure}
+\begin{figure}[H]
+\centering
+\includegraphics[scale = 0.6]{CologneT90-br-3d.pdf}
+\caption{Cologne: Temperature settings remain the same but 3 days of photoperiod variations are added for input features. One can clearly observe that the fitting is significantly improved and the noisy local minimum has been removed. }
+\label{fig:cologneTD}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[scale = 0.6]{BeijingT55P7-lm.pdf}
+\caption{Beijing: 50 out of 55 years of temperatures are used for training and the rest for predicting. $n=40$, $m=1$, the fitting result shows that 40 days temperature as input features can make very precise regression since Beijing has very obvious seasonal changes.}
+\label{fig:beijing}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[scale = 0.25]{PittsburghT210-br4.pdf}
+\caption{Pittsburgh: 210 out of 222 years of temperature are used for training and the rest for predicting. $n=40$, $m=1$. The predicting result shows that the fitting is acceptable other than the pulses at minima. The x-axis is extended for clearly showing the noisy pulses at minima, which would be harmful for plants in reality.}
+\label{fig:pittsT}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[scale = 0.6]{PittsburghT210-scg-1d.pdf}
+\caption{Pittsburgh: In addition to 40 days temperature as input features, one day of photoperiod variation has added, which help the neural network totally removed the noisy pules.}
+\label{fig:pittsTD}
+\end{figure}
+
+2. Cold region
+
+Both temperature and photoperiod variation in regions around Oslo. One station located about 200km north from Oslo is selected as our temperature data source. It is observed that merely photoperiod or temperature as input feature leads to noisy fitting. The winter in Norway is too cold for lots of plant species to grow such that proper ambient temperature may ride over the long term temperature memory.  
+\begin{figure}[H]
+\centering
+\includegraphics[scale = 0.6]{NorwT51-br.pdf}
+\caption{Norway: 51 out of 55 years of temperatures are used for training and the rest for predicting. $n=40$, $m=1$. The predicting precision depends on different input years. The second cycle is very exact but the fourth predictiong is very noisy.}
+\label{fig:NorwayT}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[scale = 0.6]{NorwD10-lm.pdf}
+\caption{Norway: Only photoperiod variations are taken as input feature with $n=10$, $m=1$. The result show that this setup gives a poor generalization.}
+\label{fig:NorwayD}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[scale = 0.6]{NorwT51D4-scg.pdf}
+\caption{Norway: Besides 40 days of temperatures, one day of photoperiod variation has been added as input feature which leads to better precision. }
+\label{fig:NorwayTD}
+\end{figure}
+3. Regions with rare seasonal temperature variations
+
+Regions as San Francisco and Hawaii have very similar temperature through every whole year, which means very few information can be extracted from their temperature. This can be also seen from the predicting results which generalize very poorly (figure \ref{fig:HawaiiT}, \ref{fig:sanT}). Moreover the predicting results showed no significant differences for different temperature memory lengths, e.g. 7 days, 20 days and 40 days. The results agree with that plants in tropical region do not rely on long term memory of temperature for flowering decision making. In order to fit flowering curves better, temperature memory was reduced to less than one week and photoperiod variations are added for input features. For both San Francisco and Hawaii, it is seen that the generalization has been improved but after testing all typical combinations of different temperature and photoperiod lengths, none of the results is as good as temperate cities (figure \ref{fig:HawaiiTD}, \ref{fig:sanTD}). Therefore, either our method does not work well for tropical regions or more information is needed for exactly predicting best flowering time for a particular plant species. To investigate the reason, one can find that basically any season in places like Hawaii is blossoming season. Then we can be confident with our method and believe that more information is needed for decision making of a particular plant. 
+\begin{figure}[H]
+\centering
+\includegraphics[scale = 0.6]{HawaiiT40-scg.pdf}
+\caption{Hawaii: 230 out of 241 years of temperatures are used for training with $n=40$, $m=1$. The neural network gives very poor generalization after being trained with long term memory of temperature. }
+\label{fig:HawaiiT}
+\end{figure}
+\begin{figure}[H]
+\centering
+\includegraphics[scale = 0.6]{HawaiiT3D4-lm.pdf}
+\caption{Hawaii: The temperature length is reduced to 3 days and 3 days of photoperiod variations are added. The fitting result has been improved but still far from the target curve. Increasing both temperature and photoperiod to 7 days makes no siginicant difference for the fitting.}
+\label{fig:HawaiiTD}
+\end{figure}
+
+
+\begin{figure}[H]
+\centering
+\includegraphics[scale = 0.6]{SanFT135-scg-40t.pdf}
+\caption{San Francisco: 150 out of 165 years of temperature are used for training with $n =40$, $m=1$. It is observed that 40 days temperature as input features gives better generalization than Hawaii but still a very bad fitting.}
+\label{fig:sanT}
+\end{figure}
+\begin{figure}[H]
+\centering
+\includegraphics[scale = 0.6]{SanFT135-scg-3d7t.pdf}
+\caption{San Francisco: Temperature length is reduced to 7 days and 3 days of photoperiod variations are added for input features. The fitting is improved but still too noisy. }
+\label{fig:sanTD}
+\end{figure}
+\section{Discussions}
+For temperate regions, our results showed that long-term temperature memory and short-term photoperiod memory give temperate plants a robust strategy for flowering time decision, which agree with biological fact that many temperate plants require a vernalization process for identifying the best flowering time. It also could be a good strategy for cold region like Norway but due to very low temperature and very short summer, the life cycles of plants in frigid regions are very different from temperate regions. In this case, ambient temperature and light intensity might play a more important role in plants' vegetative or reproductive timing. In tropical regions where locate the most diverse and abundant plant species on earth, more factors have to be taken into consideration and merely temperature and photoperiod are not sufficient for flowering decision making. To this end, future work is needed.  
+
+In order to make our results more convincing, we will need to collect the flowering time distribution of plants requiring vernalization across temperate region and then use the distribution curve as the target. Then we will need to consider other factors which influence flowering time in frigid and tropical region. For this purpose, help for biologist or ecologist is needed. 
+
+The International Pheonological gardening (IPG) project (\url{http://ipg.hu-berlin.de/}) sponsored by Humboldt University Berlin provides the plants' key phases across whole Europe. The data includes the general flowering time of most plants in Europe. This data would be a good candidate for testing our method. Firstly, we can construct a target flowering time curve using real data from a particular plant species. Secondly, we can use both temperature and photoperiod to fit the distribution curve of flowering time of all species in the data. 
+
+\section{Further work}
+
+After discussion, next step of work becomes clear and needs concentrations for wrapping the plant project up as good paper. We have shown clearly what information is needed for plants making flowering decisions. However the more realistic problem remains unanswered, which is, why and how temperature acting as a main driving force of evolution overrides day light from the evolutionary point of view. Therefore we have to verify that the information in temperature has the advantage over that in day light. In another words, in the sense of evolution, temperature has higher signal-to-noise ratio than day light such that plants in temperate region could have evolved the vernalization mechanism. 
+
+There might be two methods for verifying our hypothesis. One is to set up a simple model based on the biochemistry then run Monte Carlo simulation to capture the main driving force of evolution, which is hypothesized as temperature. The other is to remain in the regime of Neural Networks and show the weights associated features from temperature play a more important role in evolution than day light. 
+
+Several questions
+\begin{itemize}
+\item How to build the model and what the parameter ranges would be?
+\item Regarding Neural network, would techniques of the differential evolution algorithm or feature selection algorithms be suitable for proving our assumption?
+\item How to get a sensible SNR of photoperiod?
+\end{itemize}
+
+
+
+
+
+%\section{Questions}
+%1. The core genetic regulatory network for flowering time exists in all plants?
+
+%2. Plants are divided into long-day, short-day and neutral classes. What is the role of temperature or photoperiod on flowering time decision?
+
+%3. Distributions of flowering time of different place across the world?
+
+
+\end{document}

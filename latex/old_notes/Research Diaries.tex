@@ -1,0 +1,1130 @@
+
+\documentclass[paper=a4, fontsize=12pt]{scrartcl}	% Article class of KOMA-script with 11pt font and a4 format
+
+\usepackage[english]{babel}								% English language/hyphenation
+\usepackage[protrusion=true,expansion=true]{microtype}				% Better typography
+\usepackage{amsmath,amsfonts,amsthm}						% Math packages
+\usepackage[pdftex]{graphicx}							% Enable pdflatex
+\usepackage{color,transparent, xcolor}							% If you use color and/or transparency
+\usepackage[hang, small,labelfont=bf,up,textfont=it,up]{caption}			% Custom captions under/above floats
+\usepackage{epstopdf}								% Converts .eps to .pdf
+\usepackage{subfig}									% Subfigures
+\usepackage{booktabs}								% Nicer tables
+\usepackage{amssymb,amstext}
+\usepackage{gensymb}
+\usepackage{hyperref}
+\usepackage{float}
+\usepackage{graphicx}
+%\usepackage{wsuipa}
+
+%%% Advanced verbatim environment
+\usepackage{verbatim}
+\usepackage{fancyvrb}
+\DefineShortVerb{\|}							            	% delimiter to display inline verbatim text
+
+
+%%% Custom sectioning (sectsty package)
+\usepackage{sectsty}								           % Custom sectioning (see below)
+\allsectionsfont{%								          % Change font of all section commands
+	\usefont{OT1}{bch}{b}{n}%					                      % bch-b-n: CharterBT-Bold font
+%	\hspace{15pt}%							          % Uncomment for indentation
+	}
+
+\sectionfont{%									% Change font of \section command
+	\usefont{OT1}{bch}{b}{n}%							% bch-b-n: CharterBT-Bold font
+	\sectionrule{0pt}{0pt}{-5pt}{0.8pt}%					% Horizontal rule below section
+	}
+
+
+%%% Custom headers/footers (fancyhdr package)
+\usepackage{fancyhdr}
+\pagestyle{fancyplain}
+\fancyhead{}										% No page header
+\fancyfoot[C]{\thepage}								% Pagenumbering at center of footer
+%\fancyfoot[R]{\small \texttt{HowToTeX.com}}					% You can remove/edit this line 
+\renewcommand{\headrulewidth}{0pt}				% Remove header underlines
+\renewcommand{\footrulewidth}{0pt}				% Remove footer underlines
+\setlength{\headheight}{13.6pt}
+
+%%% Equation and float numbering
+
+\numberwithin{equation}{section}					% Equationnumbering: section.eq#
+\numberwithin{figure}{section}					% Figurenumbering: section.fig#
+\numberwithin{table}{section}					% Tablenumbering: section.tab#
+%%% Title	
+\title{ \vspace{-1in} 	\usefont{OT1}{bch}{b}{n}
+		\huge \strut Research Diary \strut \\
+		\Large \bfseries \strut \strut
+}
+\author{ 									\usefont{OT1}{bch}{m}{n}
+        Linlin Zhao\\		\usefont{OT1}{bch}{m}{n}
+   %     \\	\usefont{OT1}{bch}{m}{n}
+        \texttt{linlin.zhao@hhu.de}
+}
+\date{}
+
+
+%%% Begin document
+\begin{document}
+\maketitle
+
+\section{Some big questions in Biology}
+\begin{itemize}
+\item Are there still new life forms to be discovered?
+\item What role does life play in the metabolism/climate of planet earth?
+\item How do cells really work?
+\item What are the engineering principles of life?
+\item What is the information that defines and sustains life?
+\item What determines how organisms behave in their worlds?
+\item How much can we tell about the past and predict the about the future by studying life on earth today?
+\end{itemize}
+
+\section{Scaling laws of transcriptional control networks in living cells}
+Living cells permanently adjust their intracellular states in response to environment changes. Examples for this adjustment are the adaptation of metabolic pathways in response to nutrient availability, activation of stress response in the presence of unfavourable living conditions, and cell motility following gradients of light, temperature and chemoeffector concentrations. Whenever a significant change of protein content is required, the transmission of information is carried out by transcription factors that undergo conformational changes upon binding of small molecules, in general metabolites. Conformational changes affect the binding affinity of transcription factors to DNA which enables them to regulate gene regulations of the target genes. Transcription factors can target hundreds of genes including other transcription factors. How the network of transcription factors is organized is the subject of the project. 
+
+
+\section{Review on "An extended transcriptional regulatory networks of E. coli and analysis of its hierarchical structure and network motifs"}
+
+Ma's paper
+
+\section{Review on "Scaling laws in the functional content of genomes"}
+
+van Nimwegen's paper
+
+\section{How to use genetic interaction to predict regulatory networks}
+If knockout of gene $A$ reduces the growth rate of cell to $f_A$, knockout of gene $B$ reduces the growth rate to $f_B$, then we expect in the absence of the interactions between the two genes a growth rate of $f_{AB}\sim f_Af_B$ for the double knockout mutant. 
+
+If $f_A\sim 1$ and $f_B\sim 1$ but $f_{AB}\sim 0$, the system is regulated in the sense that the cell can detect the loss of $A$ and restore the fitness by regulating $B$ and vice versa. Compensation is lost if both genes are lost. 
+
+\section{Literature review on Lei Dai's papers}
+
+1. Critical slowing down: When the system dynamics are moving towards its tipping point, it may possess an increasingly slow recovery from small perturbation. Tipping points can be also referred to catastrophic bifurcations. 
+
+2. Analyse indicators for loss of resilience before a tipping point.
+
+3. Obtain the bifurcation diagram experimentally
+
+
+\section{Review: Modeling and simulation of genetic regulatory systems: a literature review}
+On the molecular level, in order to adjust to environmental changes and stimulus, the cell will control (optimize) its regulatory networks comprising of DNA, RNA, proteins and other molecules. To investigate the network system, for a particular change we need to know (1) which genes have been expressed; (2) where and when their products are needed in the cell; (3) to what extend their products should be. However the interconnections between network components possess both negative and positive feedback loops which make one very hard to interpret the dynamics of the systems intuitively. Therefore mathematical and computer tools need to be generalized. These tools particularly could be (1) digraphs; (2) Bayesian networks; (3) Boolean networks; (4) ODE and PDE; (5) qualitative ODE; (6) stochastic equations; and (7) rule-based formalism. 
+
+\section{Determinants of translation efficiency and accuracy}
+By choosing different codons, to produce the same amino acid, the efficiency of translation can be controlled due to the difference in the speed of tRNA. The alternative nucleotide sequences can result in different secondary structure and stability?. 
+
+The translation needs to be regulated due to different requirements for different proteins, such as regulatory proteins tends to be low. Therefore we need to ask the question "What is the optimal level of expression of a given gene". At least the level should be such that the benefit due to expression of the gene should exceed the cost of its products. Evolving a genome-wide translation regulation thus can be equivalent to determining the efficiency of translation of various genes at different conditions, cell types and organisms. 
+
+Another question 'how to model and predict translation efficiency from a sequence of genes' should be tackled. To predict the protein abundances genome wide in various cell types and conditions would be a big goal. The traditional computational methods for translation efficiency may merely consider the mRNA coding sequences and may additionally include investigation of tRNA pool. 
+
+{\it T1} Measures for codon bias of genes. 
+
+Genes that have a codon usage pattern reminiscent of selected 'elite' highly expressed genes are likely to highly expressed too. The Codon Adaptiveness Index has been defined as the relative adaptiveness of an individual codon encoding a given amino acid, which is the ratio of the codon's frequency in highly expressed genes to the frequency of the most abundant codon for that amino acid. 
+\begin{equation}
+CAI = \frac{f_c}{f_m}
+\end{equation}
+
+{\it T2} tRNA concentrations and translation regulation efficiency
+
+Observations indicated that translation elongation rate positively correlated to the concentration of tRNA of the translated codons. 
+Amino-acid starvation differentially affects the charging level of of isoaccepting tRNA species. 
+
+\section{calculation}
+Assuming $\alpha=\hat{p}/\hat{u}$, then the entries of feedback matrix $K$ can be simplified as 
+\begin{align}
+\label{}
+    \nonumber&K_{ii}=(1-\frac{1}{m})\frac{\sqrt{1+q\alpha}-1}{\alpha}   \\
+    \nonumber& K_{ij}=-\frac{\gamma\hat{p}}{\lambda}\frac{\sqrt{1+q\alpha}-1}{\alpha}-\frac{mb+2a}{bm^2}(1-\frac{1}{m})\frac{\sqrt{1+q\alpha}-1}{\alpha}+\frac{\gamma\hat{p}}{\lambda}\frac{\sqrt{1+q\alpha}-1}{\alpha}
+\end{align}
+We further obtain
+\begin{equation}
+\label{ }
+K_{ij}=-\frac{mb+2a}{bm^2}K_{ii}\approx -\frac{1}{m}K_{ii}
+\end{equation}
+
+
+\section{scaling laws in the gene regulation}
+As content in Markus's paper.
+
+\section{Project: efficiency and flexibility tradeoff of complex networks}
+\subsection{Problem description}
+Stoichiometric matrix $S_{m\times n}$ represents $n$ metabolic reactions between $m$ metabolites. For instance, a simple metabolic network having two reactions as 
+\begin{eqnarray}
+\nonumber A\rightarrow B + C\\
+\nonumber B+2C\rightarrow D,
+\end{eqnarray}
+has the corresponding stoichiometric matrix 
+\begin{equation}
+\nonumber S=\left(\begin{array}{cc}-1 & 0 \\1 & -1 \\1 & -2 \\0 & 1\end{array}\right). 
+\end{equation}
+As in reality the size of a metabolic network is very large, $S$ is alway a sparse matrix. The flux associated with each reaction is denoted as $\nu_i$, $i=1,\cdots,n$.
+
+Consider a simple metabolic network model as Fig. 1, which might be exposed in either of two environments denoted as $Input_1$ and $Input_2$. By using Flux Balance Analysis, we have a constraint as 
+\begin{equation}
+\nonumber S\cdot \nu^k=0, 
+\end{equation}
+where $k=1,2, \cdots, N$ represent the corresponding environments (or media). In experiments, organisms can be tested in up to about $N=500$ different environments. 
+
+Now we want to optimise simultaneously the growth efficiency (measured by the output biomass) and the flexibility (measured by the fluxes that have to be rearranged) . 
+
+The constraint arising from the limited cellular resources is 
+\begin{equation}
+\nonumber \sum_i \nu_i^k + \nu_{biomass}^k=1
+\end{equation}
+and the optimisation objective is 
+\begin{equation}
+\nonumber max\{ \alpha \cdot \sum_k \omega_k\cdot \nu_{biomass}^k-(1-\alpha) \sum_{(k, k')}\omega_{k,k'} \sum_i \mid \nu_i^k-\nu_i^{k'} \mid \}, 
+\end{equation}
+where $\alpha$ is a variable measuring the trade-off between efficiency and flexibility, $\omega$ is the probability of the emergence of the associated environment, $k$ denotes the current environment and $k'$ are its neighbouring environments which are all other environments that the organisms can be switched from $k$th environment to. 
+
+The problem would be how to solve this optimisation problem properly. 
+
+\subsection{updated illustration}
+
+For modelling metabolic networks, stoichiometric matrix $S_{n\times N}$ is widely used to represent $N$ metabolic reactions between $n$ metabolites. For instance, a simple metabolic network having two reactions as 
+\begin{eqnarray}
+\nonumber A\rightarrow B + C\\
+\nonumber B+2C\rightarrow D,
+\end{eqnarray}
+has the corresponding stoichiometric matrix 
+\begin{equation}
+\nonumber S=\left(\begin{array}{cc}-1 & 0 \\1 & -1 \\1 & -2 \\0 & 1\end{array}\right). 
+\end{equation}
+As in reality the size of a metabolic network is very large, $S$ is alway a sparse matrix. The flux (reaction rate) associated with each reaction is denoted as $\nu_i$, $i=1,\cdots,N$.
+
+Under different environments, the stoichiometric matrix of the universal metabolic network does not change but the associate fluxes will change.  In experiments, organisms can be tested in up to about $m=500$ different environments. The Flux Balance Analysis (FBA) gives rise to a fundamental constraint of the universal network as
+\begin{equation}
+\nonumber S\cdot V^k=0, 
+\end{equation}
+where $k=1, \cdots, m$ and $V^k$ is the vector of all fluxes under $k$th environment. 
+
+The objective of the project can be phrased in two ways: (1) to optimise simultaneously the growth efficiency (measured by the output biomass) and the flexibility (measured by the fluxes that have to be rearranged) of the universal metabolic network, constrained by the limited cellular sources; (2) to optimise the growth efficiency, constrained by the limited sources and flexibility of environment changes. These two ways of formulations have the equivalent biological interpretation but might result in different difficulties in algorithms for finding the optimal solution. Therefore we have the following two categories of mathematical details.
+
+{\it (I).} FBA gives a constraint as 
+\begin{equation}
+\label{FBA}
+S\cdot V^k=0,\ k=1,\cdots,m.
+\end{equation}
+
+The limited cellular resources give another constraint as
+\begin{equation}
+\label{source} \sum_i^N\nu_i^k =1,\ k=1,\cdots,m.
+\end{equation}
+Notice that $\nu_N^k$ denote the final biomass production which measures the growth efficiency. 
+
+Then we have the optimisation objective as
+\begin{equation}\label{objective}
+max\{ \alpha \cdot \sum_i^m \omega_i\cdot \nu_{N}^i-(1-\alpha) \sum_{k'}\omega_{k'} \sum_i^N\mid \nu_i^k-\nu_i^{k'} \mid \}, 
+\end{equation}
+where $\alpha$ is a variable measuring the trade-off between efficiency and flexibility, $\omega$ is the probability of the emergence of the associated environment, $k$ denotes the current environment and $k'$ are its neighbouring environments which are all other environments that the organisms can be switched from $k$th environment to. 
+
+Writing \eqref{FBA} and \eqref{source} leads to 
+\begin{equation}
+\mathbb S\cdot \mathbb V=0,
+\end{equation}
+where 
+\begin{equation}
+\nonumber \mathbb S =\left(\begin{array}{cccc}  S & \mathcal O & \cdots & \mathcal O \\
+							\mathcal O & S & \cdots & \mathcal O \\
+							\vdots & \vdots & \ddots & \mathbf O \\
+							\mathcal O & \mathcal O & \cdots & S \\ 
+							\mathbf 1 &  \mathbf 0 & \cdots & \mathbf 0 \\ 
+							\mathbf 0 &  \mathbf 1 & \cdots & \mathbf 0 \\ 
+							\vdots & \vdots & \ddots & \vdots \\ 
+							\mathbf 0 & \mathbf 0 & \cdots & \mathbf 1\end{array}\right)_{(n+1)m\times Nm},
+\end{equation}
+and
+\begin{equation}
+\nonumber \mathbb V=(V^1, V^2, \cdots, V^m)^T,
+\end{equation}
+where $\mathcal O$ is zero matrix of size $n\times N$,  $\mathbf 1 =(1, \cdots, 1)_{N}^T$ and $\mathbf 0 =(0, \cdots, 0)_{N}^T$. 
+
+{\it (II).} As the same, FBA gives a constraint as 
+\begin{equation}
+\label{FBA1}
+SV^k=0,\ k=1,\cdots,m,
+\end{equation}
+
+but the limited cellular resources give another constraint as
+\begin{equation}
+\label{source1} \alpha \sum_{i=1}^N\nu_i^k +(1-\alpha)\sum_{i=1, k\neq k'}^N\mid \nu_i^k-\nu_i^{k'}\mid=1,\ k=1,\cdots,m.
+\end{equation}
+where $\alpha$ is a variable measuring the trade-off between efficiency and flexibility.
+
+Then we have the optimisation objective as
+\begin{equation}\label{objective1}
+max\{ \sum_i^m  \nu_{N}^i \}, 
+\end{equation}
+
+
+Similarly, writing \eqref{FBA1} and \eqref{source1} leads to 
+\begin{equation}
+\mathbb S\cdot \mathbb V=0,
+\end{equation}
+where 
+\begin{equation}
+\nonumber \mathbb S =\left(\begin{array}{cccc}  S & \mathcal O & \cdots & \mathcal O \\
+							\mathcal O & S & \cdots & \mathcal O \\
+							\vdots & \vdots & \ddots & \mathbf O \\
+							\mathcal O & \mathcal O & \mathcal O & S \\ 
+							\mathbf 1 &  \mathbf 1 & \cdots & \mathbf 1 \\ 
+							\vdots & \vdots & \cdots & \vdots \\ 
+							\mathbf 1 & \mathbf 1 & \cdots & \mathbf 1\end{array}\right)_{(M+1)m\times Nm},
+\end{equation}
+and 
+\begin{equation}
+\nonumber \mathbb V=(V^1, V^2, \cdots, V^m)^T,
+\end{equation}
+where $\mathcal O$ is zero matrix of size $n\times N$,  $\mathbf 1 =(1, \cdots, 1)_{N}^T$. 
+
+
+\subsection{Detail description}
+The organisms might be exposed in different environments, which means different nutrient availabilities. When sensing the changes, their gene regulatory systems make adaptive responses by activating or repressing gene transcriptions which result in changes in their metabolic networks. 
+
+This project is aimed at understanding the evolutionary optimisation mechanisms of metabolic networks by considering simultaneously the growth efficiency and the changing flexibility. The efficiency means that the organisms are able to produce as much as possible biomass using the presented sources. Equivalently as less steps as possible are used in the metabolic network to produce the biomass
+
+\section*{Project: efficiency and flexibility tradeoff of complex networks}
+For modeling metabolic networks, stoichiometric matrix $S_{M\times N}$ is widely used to represent $N$ metabolic reactions between $M$ metabolites. For instance, a simple metabolic network having two reactions as 
+\begin{eqnarray}
+\nonumber A\rightarrow B + C\\
+\nonumber B+2C\rightarrow D,
+\end{eqnarray}
+has the corresponding stoichiometric matrix 
+\begin{equation}
+\nonumber S=\left(\begin{array}{cc}-1 & 0 \\1 & -1 \\1 & -2 \\0 & 1\end{array}\right). 
+\end{equation}
+Since in reality the size of a metabolic network is very large, $S$ is alway a sparse matrix. The flux (reaction rate) associated with each reaction is denoted as $\nu_i$, $i=1,\cdots,N$. $N$ is the number of reactions in a metabolic network. The vector form of fluxes can be written as 
+\begin{equation}
+\nonumber
+V=(\nu_1, \cdots, \nu_j, \nu_{j+1}, \cdots, \nu_{N-1}, \nu_N)
+\end{equation}
+where $\nu_1, \cdots, \nu_j$ are fluxes related to transporting reactions which transport nutrients from the environment to the inside of the cell; $\nu_{j+1}, \cdots, \nu_{N-1}$ are fluxes related to intracellular reactions; and $\nu_N$ is the biomass reaction flux which measures the growth efficiency. 
+
+Biochemically, transporting reactions and biomass reaction are irreversible but almost all intracellular reactions are reversible. Thus the boundary conditions for the fluxes are
+\begin{align}
+\nonumber
+    0\leq \nu_1, \cdots, \nu_j, \nu_N&<\infty   \\
+ \nonumber     -\infty<\nu_{j+1}, \cdots, \nu_{N-1}&<\infty.
+\end{align}
+The environmental changes might give rise to zero values of some fluxes of $\nu_1, \cdots, \nu_j$. But the stoichiometric matrix of the universal metabolic network does not change.  In experiments, organisms can be tested in up to about $m=500$ different environments. The Flux Balance Analysis (FBA) gives rise to a fundamental constraint of the universal network as
+\begin{equation}
+\nonumber S V^k=0, 
+\end{equation}
+where $k=1, \cdots, m$ ($m$ is the number of environments) and $V^k$ is the vector of all fluxes in $k$th environment. 
+
+The objective of the project can be phrased in two ways: (A) to optimise simultaneously the growth efficiency (measured by the output biomass) and the flexibility (measured by the fluxes that have to be rearranged) of the universal metabolic network, constrained by the limited cellular sources; (B) to optimise the growth efficiency, constrained by the limited sources and flexibility of environment changes. These two ways of formulations have similar consequences from biological point of view but might result in different difficulties in algorithms for finding the optimal solution. Therefore we have the following two categories of mathematical details.
+
+\subsection*{Model A}
+Flux balance gives a constraint as 
+\begin{equation}
+\label{FBA}
+SV^k=0,\ k=1,\cdots,m.
+\end{equation}
+
+The limited cellular resources give another constraint as
+\begin{equation}
+\label{source} \sum_{i=1}^N\nu_i^k =1,\ k=1,\cdots,m.
+\end{equation}
+Here $\nu_N^k$ denote the final biomass production in $k$th environment which measures the growth efficiency. 
+
+The optimisation objective is given by
+\begin{equation}\label{objective}
+max\{ \alpha \sum_{k=1}^m \omega_k \nu_{N}^k-(1-\alpha) \frac{1}{mN}\sum_{(k,k'\neq k)}\omega_{k,k'} \sum_{i=1}^{N-1}\mid\ \mid\nu_i^k\mid-\ \mid\nu_i^{k'} \mid\ \mid \}, 
+\end{equation}
+where $\alpha$ is a variable measuring the trade-off between efficiency and flexibility, $\omega$ is the probability of the emergence of the associated environment, $k$ denotes the current environment and $k'$ are its neighbouring environments which are all other environments that the organisms can be switched from $k$th environment to. 
+
+Writing \eqref{FBA} and \eqref{source} together leads to 
+\begin{equation}
+\mathbb S \mathbb V=(\mathbf 0_{M\times 1}, \cdots, \mathbf 0_{M\times 1}\ \vdots \ 1, \cdots, 1),
+\end{equation}
+where 
+\begin{equation}
+\nonumber \mathbb S =\left(\begin{array}{cccc}  S & \mathbf O & \cdots & \mathbf O \\
+							\mathbf O & S & \cdots & \mathbf O \\
+							\vdots & \vdots & \ddots & \vdots \\
+							\mathbf O & \mathbf O & \cdots & S \\ 
+							\hdotsfor{4}\\
+							\mathbf 1 &  \mathbf 0 & \cdots & \mathbf 0 \\ 
+							\mathbf 0 &  \mathbf 1 & \cdots & \mathbf 0 \\ 
+							\vdots & \vdots & \ddots & \vdots \\ 
+							\mathbf 0 & \mathbf 0 & \cdots & \mathbf 1\end{array}\right)_{(M+1)m\times Nm},
+\end{equation}
+and
+\begin{equation}
+\nonumber \mathbb V=(V^1, V^2, \cdots, V^m)^T,
+\end{equation}
+where $\mathbf O$ is zero matrix  of size $M\times N$,  $\mathbf 1 =(1, \cdots, 1)_{N}$ and $\mathbf 0_{1\times N} =(0, \cdots, 0)_{N}$. 
+
+\subsection*{Model B} 
+As the same, Flux balance gives a constraint as 
+\begin{equation}
+\label{FBA1}
+SV^k=0,\ k=1,\cdots,m,
+\end{equation}
+
+but the limited cellular resources give another constraint as
+\begin{equation}
+\label{source1} \alpha \sum_{k=1}^N\nu_i^k +(1-\alpha)\frac{1}{m}\sum_{i, k'\neq k}\mid\ \mid\nu_i^k\mid-\mid\nu_i^{k'}\mid\ \mid=1,\ k=1,\cdots,m.
+\end{equation}
+where $\alpha$ is a variable measuring the trade-off between efficiency and flexibility.
+
+Then the optimisation objective is given by
+\begin{equation}\label{objective1}
+max\{ \sum_{k=1}^m  \nu_{N}^k\}, 
+\end{equation}
+
+
+Similarly, writing \eqref{FBA1} and \eqref{source1} together leads to 
+\begin{equation}
+\mathbb S \mathbb V=0,
+\end{equation}
+where 
+%\begin{equation}
+%\nonumber \mathbb S =\left(\begin{array}{cccc}  S & \mathcal O & \cdots & \mathcal O \\
+%							\mathcal O & S & \cdots & \mathcal O \\
+%							\vdots & \vdots & \ddots & \mathbf O \\
+%							\mathcal O & \mathcal O & \mathcal O & S \\ 
+%							\mathbf 1 &  \mathbf 1 & \cdots & \mathbf 1 \\ 
+%							\vdots & \vdots & \cdots & \vdots \\ 
+%							\mathbf 1 & \mathbf 1 & \cdots & \mathbf 1\end{array}\right)_{(n+1)m\times Nm},
+%\end{equation}
+\begin{equation}
+\nonumber \mathbb V=(V^1, V^2, \cdots, V^m)^T,
+\end{equation}
+but the lower part of $\mathbb S$ no longer possesses the diagonal block structure as in the first model since the second term in the left hand of \eqref{source1} integrates information from other environments. 
+
+\subsection*{An argument}
+
+Since the number of metabolites in each reaction ranges from 2 to 6, the number of non-zero elements in $\mathbb S$ should be of order $\mathcal O(\gamma Mm)$ where $\gamma$ is real value ranging from 2 to 6.
+
+
+\section{superessentiality}
+
+If a reaction is frequently essential for preserving a phenotype in random viable metabolic networks, then the corresponding enzyme-coding gene should also occur frequently in many prokaryotic genomes.
+
+\section{List of genetic interactions in flowering control}
+
+\ \ \ FLC$\dashv$ FT
+
+FRI (FRIGIDA)$\rightarrow$ FLC
+
+vernalization$\dashv$ FLC
+
+autonomous pathway$\dashv$ FLC
+
+CDF1$\dashv$ CO
+
+GI-FKF1$\dashv$ CDF1
+
+Light$\to$ GI-FKF1 $\to$ CO$\to$ FT (TSF)
+
+FLC$\dashv$ SOC1
+
+PhyA, PhyB, Cry1, Cry2 are photoreceptors.
+
+COP-SPA1 $\dashv$ CO
+
+concentration of VIN3 can be a read-out of the length of cold, the information of which is then converted to H3K27me3 after returning to warm. 
+
+
+\section{QA about flowering control}
+
+\subsection{The primary question}
+
+1. How do winter annuals in temperate regions use winter memory or photoperiodic changes to track seasons? How to quantify this ability of plants of identifying seasons and flowering in the right season?\\
+
+2. How to identify mathematically which environmental cue is the dominant factor of flowering control?\\
+
+3. How to implement the idea of hypothetically replacing the winter memory of FLC with reduced CO concentration? This idea is based on the fact that the final flowering information integrator FT is directly repressed by FLC but activated by CO such that the effect of reducing CO concentration is somehow equivalent to the effect of FLC. The puzzling problem for me is that since the vernalization is continuously repressing the expression of FLC during the cold and after returning to the warm condition, the expression of FLC is almost switched off, whose effect is actually equivalent to increasing CO concentration. \\
+
+4. The main problem left for mathematical techniques is to optimize the kinetic rates in the model, with objective of minimizing the probability of wrong flowering decision. \\ 
+
+\subsection{The detailed QAs}
+
+1. The pathways involved in flowering control?
+
+A: FLC, CO, FT, vernalization pathway, photoperiod pathway, autonomous pathway, circadian clock pathway. Details of these pathways can be found in the later section of summarizing the proposal and related literature. \\
+
+2. Why is the CO protein only stable in the light?
+
+A: Direct interactions between activated CRY2 and SPA1 or COP1 reduce the catalytic activity of COP-SPA1 in the light and CO is not efficiently degraded. In response to blue light, FKF1 binds to CO, increasing its stability. (but at early day, HOS1 makes the CO unstable.)\\
+
+3. Why is the CO protein only accumulated in long days?
+
+A: Answer of Q2 actually is part of the reason. Another reason is that in long days, the light induced  GI-FKF1 binds to the CO transcription repressor CDFs such that the CO transription level start increasing 10-12h after dawn. Therefore a peak of CO mRNA appears at late day when the accumulation of CO protein becomes possible due to the availability of light. Consequently the flowering is promoted. In short, only under long day conditions does the CO expression coincide with the light, which allows the accumulation of CO protein. \\
+
+4. How do CDFs vary during a circadian rhythm? CDFs are repressors of CO transcription. The light induced GI-FKF1 will degrade the CDFs protein such that in long days, a peak of CO mRNA appears 10-12h after dawn but in short days, no peak appears in daytime and CO mRNA increases during night. Therefore the confusing point is that how the CO mRNA can still increase during night in the presence of an increasing CDFs. This is observed from the fig. 1 in \cite{turck2008}. \\
+
+5. Circadian patterns of CO, GI and FKF1 transcription create diurnal rhythms of their mRNA, and whether these rhythms coincide with exposure to an external signal under long days determines whether the regulatory proteins are stabilized to promote flowering. \\
+
+6. How to understand this statement: 
+
+Misexpression of FT from promoters that are specific to the phloem companion cells of the vascular tissue or the SAM corrected the late flowering phenotypes of the co and ft mutants as well as ft tsf double mutants?\\
+
+7. What is FLC protein?
+
+A: FLC is a MADS-Box transcription factor that directly binds to floral promoting genes (like FT) and blocks their transcription, thereby acting as a repressor of flowering. FLC requires SVP to delay flowering strongly. SVP: short vegetative phase. \\
+
+8. 
+
+
+\section{list of Arabidopsis species}
+\begin{itemize}
+\item Arabidopsis arenosa
+\item Arabidopsis cebennensis
+\item Arabidopsis croatica
+\item Arabidopsis lyrata
+\item Arabidopsis neglect
+\item Arabidopsis pedemontana
+\item Arabidopsis suecica
+\item Arabidopsis thaliana
+\end{itemize}
+
+How much is the difference among different Arabidopsis species?
+
+
+\section{Summary}
+\begin{itemize}
+\item Hill function for CO protein to replace the effect of FLC protein. 
+\item a cut from circadian clock for defining long days and short days, therefore conditions for accumulation of CO protein can be modeled. 
+\item set up equations for the model
+\item the mathematical background for the optimization approach
+\end{itemize}
+
+Correct flowering decision of plants in the natural fluctuating environment is crucial for their reproductive success. The molecular mechanisms unraveled by genetic analysis involve an intricate network of signaling pathways for controlling flowering time by dealing with several environmental cues among which temperature and light are primary factors. {\it Arabidopsis thaliana} as a model plant can be a suitable candidate for the theoretical investigation since its genetic network for flowering control is well understood by the research community. In Arabidopsis, the core of this genetic network mainly consists of vernalization pathway, circadian rhythm pathway, and photoperiod pathway. The effects of other pathways like autonomous pathway and GA pathway can be integrated by the core pathways. Therefore our work is focused on key components of the core pathways, such as FLC, FT, CO, which are interacted with each other. The interactions\cite{coupland2012} can be seen in Fig. 1. 
+\begin{figure}
+\centering
+\includegraphics[scale=0.35]{interaction.eps}
+\caption{The flowering time regulation of {\it A. thaliana}}
+\end{figure}
+
+For winter annuals of {\it Arabidopsis}, the vernalization is necessary for flowering since the flowering repressor FLC which represses the expression of flowering promoter FT can be turned off by vernalization.  The effects of vernalization on FLC expression is shown in Fig. 2. In the presence of silencing FLC, the flowering is promoted under long-day condition  because the expression of FT protein can be promoted by the CO protein which is only stable in the light. Based on the interactions among CO, FLC, and FT, we can firstly set up a group of rough equations for describing the mechanism mathematically. 
+
+\begin{figure}
+\centering
+\includegraphics[scale=0.4]{vernalization.eps}
+\caption{The effect of vernalization on FLC}
+\end{figure}
+\begin{align}
+\nonumber &\frac{dc_m}{dt}=-\alpha c_m+L\\
+\nonumber &\frac{dc}{dt}=-\gamma c+\beta c_m \\
+\nonumber &\frac{da}{dt}=-\eta a+\xi (1-r)c\\
+\nonumber &r=\left\{ \begin{array}{l l}
+0 &\quad \text{switched-off FLC by vernalization}\\
+1 &\quad \text{otherwise}
+\end{array} \right.
+\end{align}
+where $c_m$, $c$, $a$, $r$ denote the concentrations of CO mRNA, CO protein, FT protein, and normalized FLC concentration, respectively; $L$ is the promoting variable for CO mRNA, which is induced by the light (e.g. GI-FKF1); $\alpha$, $\beta$, $\gamma$, $\eta$, $\xi$ are the related kinetic rates, and especially the degradation rate  of CO protein $\gamma$ is light-dependent. 
+
+Several primary questions need to be solved based on this rough model: How do winter annuals in temperate regions use winter memory or photoperiodic changes to track seasons? How to quantify this ability of plants of identifying seasons and flowering in the right season? Why the temperature-induced vernalization pathway make the flowering decision robust? In order to answer these theoretical questions, we presumably take the light as the dominant environmental cue for the winter annuals tracking seasonal changes. Correspondingly, the effect of FLC on flowering should be replaced by the effect of reduced CO protein which is a direct outcome of the photoperiod pathway. 
+
+To fulfill the replacement of FLC, Hill function of CO protein can be a good candidate to synthesize the switch behavior of FLC protein during vernalization. Following this idea, the previous model can be refined as
+%\begin{align}
+%\nonumber &\frac{dc_m}{dt}=-\alpha c_m+k(1-\frac{1}{1+c^n})\\
+%\nonumber &\frac{dc}{dt}=-\gamma c+\beta c_m \\
+%\nonumber &\frac{df}{dt}=-\eta f+\xi \frac{k}{1+c^n}c.
+%\end{align}
+\begin{align}
+&\frac{dc_m}{dt}=-\alpha c_m+g(T)\label{cm}\\
+&\frac{dc}{dt}=-\gamma(T) c+\beta c_m\label{c}\\
+&\frac{da}{dt}=-\eta a+\xi \frac{c^n}{k^n+c^n}c\label{a}.
+\end{align}
+where $g(T)$ denotes the effect of light on the transcription of CO and $\gamma(T)$ is the turnover rate of CO protein where $T$ represents the day length; $n$ is the Hill coefficient and $k$ is the artificial dissociation constant. For the Hill function
+\begin{equation}
+\nonumber f(c)=\frac{c^n}{k^n+c^n}, 
+\end{equation}
+\begin{itemize}
+\item the case $c\gg k$ where $f(c)\approx 1$ corresponds to switched-off state of FLC;
+\item the case $k\gg c$ where $f(c)\approx 0$ corresponds to the highly expressed state of FLC. When the CO protein level is almost zero, the plant may be in very short days which usually happen in winter. Therefore by choosing suitable value of $k$, the FLC effects can be successfully replaced by CO protein which is light induced. 
+\end{itemize}
+Day length $T$ is under the control of the circadian clock. 
+
+By solving \eqref{cm} and \eqref{c} to get the expression of $c$ as following, we can observe that CO protein is correlated with the day length, its own turnover rate and turnover rate of CO mRNA:
+\begin{align}
+%\label{ }
+\nonumber c_m=c_{m0}e^{-\alpha t}+\frac{g(T)}{\alpha}\\
+\nonumber c=c_{0}e^{-\gamma (T) t}+\frac{\beta c_m}{\gamma(T)}. 
+\end{align}
+Substituting the solutions into \eqref{a} makes the dynamic of FT protein only depend on turnover rates and day length. Then a critical value of FT protein, above which flowering happens, can be a constraint for the following optimizing analysis.  And the wrong flowering decision could be case that FT protein exceed the critical value in short days (small $T$). The optimization objective could be to minimize the probability distribution of kinetic rates which leads to high concentration of FT protein under short days. 
+
+
+
+
+One thing needs to be considered very carefully is to always remember what the biologists expect from theoretical results for their experiments!
+
+\section{Literature review}
+\subsection{Predicting $C_4$ photosynthesis evolution}
+To achieve the goal of predicting and verifying the adaptive trajectory, the model should be correlated with the organismal fitness clearly. Lercher et al. investigated the fitness landscape of C3-C4 photosynthesis. The results showed that i) C4 photosynthesis is evolutionarily accessible through individually adaptive steps from any intermediate state; ii) biochemical subtraits evolved in modules and the order and constitution of modules confirmed previous hypotheses; iii) C3-C4 intermediates lie on the evolutionary trajectory. 
+
+
+\subsection{Effects of genetic perturbation on seasonal life history plasticity}
+In \cite{wilczek2009} a photothermal model  has been proposed based on the experimental results. How to incorporate ideas from this model to our model? Firstly a thorough review of this paper and \cite{chew2012} needs to be presented here. 
+
+For examining the effects of different levels of FLC, and thus the vernalization requirements, ecotypes \emph{Col-0}, \emph{Col-FRI-Sf2} and autonomous pathway mutations are planted across different sites to investigate variances in flowering time. \emph{Col-0} is a natural ecotype with null \emph{fri} and \emph{Col-FRI-Sf2} is Sf-2 ecotype with strong FRI allele. Autonomous pathway mutation includes mutants \emph{ld-1, fve-3, fve-4}. Remarkably \emph{Col-FRI-Sf2}  and autonomous pathway mutations flowered at similar times: 
+\begin{itemize}
+\item for summer cohorts, both resulted in delay of about 10 days; 
+\item for spring cohorts, small but significant delays are observed; 
+\item for autumn cohorts, the expected winter annual life history is observed in all plantings. 
+\end{itemize}
+Therefore for summer cohorts which have not experienced vernalization, the delay time is merely 10 days and the expected winter annual life history did not show. This observation also implies that the effect of FLC can be overridden by other factors like fluctuating temperatures and light conditions. (as if that FLC is killed.) Another striking fact is 
+\begin{itemize}
+\item The \emph{Col-0} with null \emph{fri} behaved as a rapid cycler only in Norwich. Unexpectedly, in the remaining autumn cohorts, Col-0 flowered much later that in Norwich, displaying a clear winter annual life history. 
+\end{itemize}
+Therefore from the developmental traits of planting across the five sites, it concludes that loss of FRI function converts winter annuals to rapid cyclers only under a narrow range of environmental conditions. 
+
+\subsection{Forecasting flowering phenology under climate warming by modeling the regulatory dynamics of flowering-time genetics \cite{satake2013}}
+This paper mainly focused on investigating the effects of warming climate on the flowering time of perennial plants, \emph{Arabidopsis Halleri} as the model plant. A predictive model based on the genetic regulatory mechanism was proposed to imitate the experimental results. The model was parameterized by long-term controlled experiments and precisely predicted the corresponding timing of floral initiation and reversion to vegetative growth in complex natural environments. The authors also concluded that by increasing $4.5\celsius - 5.3\celsius$, the flowering of \emph{Arabidopsis Halleri} would be completely prohibited. 
+
+Two significant transients of perennial plants are AW(autumn to winter) and WS (winter to spring). In AW, \emph{VIN} will be gradually induced to inhibit the expression of \emph{FLC} when the temperature below a certain threshold. In WS, as the temperature is increasing and photoperiod is getting longer, the expression of \emph{VIN} is greatly reduced meanwhile the FT expression will be initiated. Therefore in the flowering season spring, a transient peak of FT will present in most flowering plants. However the FLC level will be increased when it is getting warmer and the FT expression will be repressed. 
+
+Two important facts about the temperature response of FT and FLC:
+\begin{itemize}
+\item The production rates of both FLC and FT are increasing function of temperature, but the rate of increase is larger in FLC than in FT. 
+\item The degradation rate of FLC decreased as the temperature rise, which allows elevated accumulation of FLC transcripts with the temperature increase. In contrast, the degradation rates of FT increase with rising temperature. 
+\end{itemize}
+\subsection{mendoza1998}
+Mendoza and Alvarez-Buylla \cite{mendoza1998} integrated numerous experimental data into a regulatory networks of 11 genes that control the shoot branching pattern and switch to flowering in {\it Arabidopsis}.  
+
+\subsection{lee2013 and }
+\cite{lee2013} what is FLM? How does it work? what about temperature effects on it? effects from other pathways?
+
+
+\subsection{Liu2013 Emerging insights into florigen transport}
+The review summarized the most recent understandings of florigen transport and discussed the proven and potential regulators for the transport. The advances were mainly focused on Flowering Locus T (FT) in {\it Arabidopsis} which encodes the FT proteins to be part of the florigen. FT's orthologs play the same role in other plant species. The main question having to be answered is that how florigen makes its voyage from the leaves to the SAM and how this transport is regulated. 
+
+In {\it Arabidopsis}, it is well known that FT transcription is activated in the vascular tissues of leaves by the CO transcriptional regulator under long days only when the accumulation of CO translation products becomes possible. In addition to photoperiod, several other developmental and environmental signals, such as gibberellins and temperature. 
+
+The FT protein acts as a phloem-mobile florigen signal moving from leaves to the SAM. In the SAM, FT protein interacts with the transcription factor FD to activate the SOC1, another floral integrator in the inflorescence meristem, and the AP1, a floral meristem identity gene. FT proteins are transported from companion cells to sieve elements in the phloem stream, and eventually to the SAM. These transportations are regulated. 
+
+FTIP1, an ER membrane protein, has been reported to be an essential regulator required for FT transport from the companion cells to sieve elements in {\it Arabidopsis }.  This paper specifically summarized the transport mechanism of FT by FTIP1. Probably a lot of regulations are involved in the transport of florigen along the long way from the leaves to the SAM, even merely from the companion cells to the sieve elements. Transport regulations may have significant contributions to the stability and tempo-spatial effect of florigen, thus being an integral part of the flowering responses to environmental cues.
+
+Regarding our question of how to quantify the probability of a certain FT protein being transported to the SAM, the regulation tightness could be the main effector. 
+
+
+\cite{chew2012} In the 18th century Reaumur 
+
+
+\cite{satake2013}
+
+
+
+\section{daily tasks}
+
+The strategy of combining photoperiod and vernalization effects for flowering time control is evolutionarily robust for some plant species. We start with investigating why these plants integrate both temperature and photoperiod signals for making flowering decision although merely photoperiod would be sufficient. Further challenges will be to describe the flowering mechanism for vast range of species mathematically, to understand how the selection pressure effects the variations between different ecotypes of the same species, and to predict/prove the evolutionary track on which different ecotypes are fitted. These results will lead to applications in predicting the effects of climate changes on flowering time. 
+
+\section{Population genetics notes}
+1. Genetic variation
+\begin{itemize}
+\item Locus: \emph{position} of a gene on a chromosome
+\item Gene: segment of DNA that is involved in producing a polypeptide chain(often a protein)
+\item Allele: one of two or more alternative forms of a gene
+\item Genome: Full set of genes or chromosomes for an organism
+\item Allotype: product of one or more allele that results in inherited variants of a particular molecular, usually a protein
+\item A locus is not a tangible thing; rather, it is a map describing where to find a tangible thing, an allele, on a chromosome. With this convention, a diploid may be said to have two alleles at a particular autosomal locus, one from its mother and the other from its father. 
+\item Alleles can be said as different in three sense: 1. differ by origin; 2. differ by state; 3. differ by descent 
+\item Diploid individuals are said to be heterozygous at a locus if the two alleles at that locus are different by state; and homozygous if their two alleles are identical by state. 
+\item the sample allele frequency is an estimate of the population allele frequency. 
+\item population genetics is very quantitative
+\item Hardy-Weinberg law is one celebrated theory for quantifying the relationship between allele and genotype frequencies. It describes the the equilibrium state of a single locus in a randomly mating diploid population that is free of other evolutionary forces, such as mutation, migration, and genetic drift. This law is particularly easy to be understood in hermaphroditic species. The Hardy-Weinberg equilibrium is reached in a single generation of random mating in hermaphrodites. 
+\item the definition of heterozygosity uses only allele frequencies, not genotype frequencies, then heterozygosity is often used to describe levels of variation in populations that do not conform to the Hardy-Weinberg assumption of random mating. 
+\item A description of the genetic structure of a population must include a geographic component if the ultimate goal is to understand the evolutionary forces responsible for genetic variation. 
+\item most species have differentiating patterns of population genetic structure due to the local random mating. 
+\end{itemize}
+
+2. Genetic Drift
+
+The assumption in Hardy-Weinberg law that the number of random mating population is infinite is hardly acceptable in most realistic species. In finite population, random changes of the allele frequencies result from the variation of the offspring numbers between individuals. The notion of genetic drift is used for the random changes, which have two important effects on the evolution: 1) act as a dispersive force to remove genetic variation from population. The force is usually very weak in natural populations due to the inverse proportion of the removal rate to the population size. 2). genetic drift has effect on the survival probability of new mutations, an important effect even in the largest population. In addition, the survival probability of beneficial mutation is independent of the population size. 
+
+\begin{itemize}
+\item The changing randomness in natural population comes from two sources: Mendel's law of segregation, and demographical stochasticity.
+\item a simple example of evolutionary simulation: $N=20$ diploid individuals with $p=0.2$ allele frequency for $A_1$
+\end{itemize}
+
+\section{Complexity course}
+1. Definition of Complexity
+\begin{itemize}
+\item (Weave 1948)definition of complexity: Shannon information and Factal dimension. Problem of simplicity (a few variable) $\rightarrow$ Problem of disorganized complexity $\rightarrow$ Problems of organized complexity: problems which involve dealing simultaneously with a sizable number of factors which are interrelated into an organic whole. 
+\item What makes an evening primrose open when it does?
+\item What is the description of aging in biochemistry terms?
+\item what is a gene, and how does the original genetic constitution of a living organism express itself in the developed characteristics of the adult?
+\item On what does the price of wheat depend?
+\item how can currency be wisely and effectively stabilized?
+\end{itemize}
+
+\section{Report progress 10.01.2014}
+
+Nadia: Sex determination of honeybees
+
+Female honeybees are diploids with two different chromosomes while the males are either haploids or diploids with two same chromosomes. The signals can slice the chromosomes into different segments which can express the sex determining molecules named Ferm. 
+
+Sarah: Modeling the root formation dynamics
+
+The modeling problem involves three different types of cells and two diffusive transcription factors. The major obstacle of the project is that the genetic mechanism is not very clearly revealed. 
+
+
+\section{Neural network method for extracting information from temperature and day length}
+The genetic control network for deciding the flowering time takes the temperature and photoperiod as input signals and identifies the right time for flowering, which is April for most plant species. From the perspective of neural network, it can be categorized as a classification problem where the training data is the temperature and photoperiod from last few years, the training target is, for any given real data of temperature and photoperiod, to identify which month it belongs to. The NN structure consists of the temperature and photoperiod as the input layer, one hidden layer which mimic the functions of genetic network, and the output layer. 
+
+Problems:
+\begin{itemize}
+\item For each layer, how many nodes are needed?
+\item It is for sure that the neural network algorithm is competent to classify data into different months. Then how to deal with the temperature and photoperiod data properly such that we can have effective training and fruitful training results?
+\item The big problem is how to connect the neural network to our genetic network, in other words, How can we use neural network to explain the genetic regulation of flowering time?
+\end{itemize}
+
+idea 1: two input nodes corresponding to temperature and photoperiod, three hidden nodes corresponding to the three core genes, one node for the output layer. the problem for this idea is that it is hard to deal with the data as for each day, one number of photoperiod is sufficient but at least three is needed for temperature (the average, the highest, and lowest). 
+
+idea 2: four input nodes, one for photoperiod, the rest for highest, lowest and average temperature respectively. this is very easy to realize the classification but it is hard to connect the NN to genetic network. 
+
+
+"Independently of all your philosophy, here are the facts of actual performance", said frequentist. 
+
+One can argue with a philosophy; it is not so easy to argue with a computer printout, which says to us: Independently of all your philosophy, here are the facts of actual performance.
+
+
+\section{06.03 2014}
+
+In this week much effort has been put on Bayesian Inference which is a very interesting topic for machine learning although it is a bit far from classic Neural Network techniques. Bayesian neural network would be a very powerful tool to tackle difficult problems. In the following days, focuses should be on two things: 1) find out the general idea of Bayesian Neural Network as well as the solid mathematical background of Feindt's NeuralBayes algorithm; 2) go back to the plant project and think about which could be a suitable routine to extract information from temperature and photoperiod for plants' decision of flowering time. 
+
+Several things have to be classified:
+\begin{itemize}
+\item Neural network based on the frequentist framework. Main idea, training algorithm, short comings...
+\item Bayesian regularization for Neural networks...
+\item Bayesian neural networks
+\item Write an overview: Neural networks: from the frequestist to Baysian. 
+\end{itemize}
+
+\section{11.03.2014}
+
+We are living in an era with explosion of data ranging from scientific activities to our daily lives such as sequencing data, online social activities, emails, searching preferences, medical recordings and so on, just to name a few. It is said that our world will be "ruled" by algorithms in a few decades since human brains are not capable of dealing with such massive data and machines armed with efficient algorithms should be employed to help us. This fancy area is known as Artificial Intelligence where Machine Learning plays a central role when massive data are involved. The term "Machine learning" can be interpreted as "fitting a parametric or nonparametric model to data in order to make predictions". Neural network which is biologically inspired is one of the most successful models for recognizing patterns from data. In this short review, simple examples will be used to give a clear line for neural network from the frequestist framework to Bayesian framework. A very brief description of Bayesian inference will present before introducing Bayesian methods for neural networks. 
+
+\subsection{Standard Neural Network framework}
+Linear combinations of nonlinear basis functions $\phi_j(x)$ are the basic models for regression and classification, which take the form
+\begin{equation}
+z(x, w) = f\left( \sum_{j=1}^Mw_j\phi_j(x) \right)
+\end{equation} 
+where $w=(w_1, w_2, \cdots, w_M)$ is the parameter vector and $f(\cdot)$ is the activation function (nonlinear for classification and identity for regression). For a learning process, the number of parameters increases with the training set. Alternatively, neural network model uses fixed number of parameters in advance, the values of which can be adjusted during training. 
+
+A feedforward neural network with two layers can be mathematically described as 
+\begin{equation}
+z_k(x, w) = \sigma\left( \sum_{j=1}^Mw_{kj}^{(2)}h\left(\sum_{i=1}^nw_{ji}^{(1)}+w_{j0}^{(1)}\right) + w_{k0}^{(2)}\right)
+\end{equation}
+which can be graphically described as 
+\begin{figure}[\h]
+\centering
+\includegraphics[scale = 0.2]{n.pdf}
+\end{figure}
+
+where $n$, $M$ denote the numbers of input and hidden nodes respectively. The training purpose of neural network is to find the optimal parameter $w$ which minimizes the error function (in literature also called cost function or performance function)
+\begin{equation}
+E_D({\bf w})=\frac{1}{2}\sum_N\| z(x_N, {\bf w}) - d\|^2 \label{error}
+\end{equation}
+where $d$ is the desired output and $N$ is the training steps or the size of training set. Please note that several types of error functions are available for different learning purposes. Here sum of squared error function is chosen for illustration which is widely used for regression problems. Then the main task becomes to minimize the error function with respect to parameter $w$. 
+
+The steepest gradient descent (Error backpropagation EBP) algorithm is one the most significant breakthroughs of neural networks, which is still widely used today. The idea of EBP is to update the weights using the first order derivatives of error function until it becomes zero. We use a very simple but informative neural network model to elaborate the algorithm details first and then discuss its improvements. 
+
+\begin{figure}[\h]
+\centering
+\includegraphics[scale=0.28]{simple1.pdf}
+\end{figure}
+where $x$ and $z$ are scalar input and output respectively.  Now we calculate the first order derivatives of $E(w)$ with respect to $w_1$ and $w_2$
+\begin{align}
+\nonumber \frac{\partial E}{\partial w_2} &=\frac{\partial E}{\partial z}\frac{\partial z}{\partial p_2}\frac{\partial p_2}{\partial w_2}\\
+\nonumber &=(d-z)\frac{\partial z}{\partial p_2} y
+\end{align}
+
+\begin{align}
+\nonumber \frac{\partial E}{\partial w_1} &=\frac{\partial E}{\partial z}\frac{\partial z}{\partial p_2}\frac{\partial p_2}{\partial y} \frac{\partial y}{\partial p_1}\frac{\partial p_1}{\partial w_1}\\
+\nonumber &=(d-z)\frac{\partial z}{\partial p_2}w\frac{\partial y}{\partial p_1} x
+\end{align}
+Writing the derivatives in vector form 
+\begin{equation}
+g = (\frac{\partial E}{\partial w_1}\  \frac{\partial E}{\partial w_2})^T. 
+\end{equation}
+Then the weight vector can be updated by 
+\begin{equation}
+w_{k+1} = w_k-\alpha g. 
+\end{equation}
+This simple model is said to be informative since calculation of $g$ can be directly extended to higher dimensions. The main drawback of EBP is its slow convergence caused by the small step size which aims for avoiding rattling out the desired minima. 
+
+Improvements of EBP:
+\begin{itemize}
+\item Gauss-Newton algorithm (GNA) takes the second order derivatives of error function into account such that the curvature can be evaluated and the step sizes with respect to different curvatures can be properly adapted. This algorithm converge very fast but it works only for a reasonable quadratic approximation of error function. It mostly diverges for other cases. 
+\item Levenberg-Marquardt Algorithm is developed by combining both EBP and GNA. It is more stable than GNA and converge faster than EBP. For details please refer to (Yu Hao, 2010).
+\end{itemize}
+
+\subsection{Probabilistic interpretation of Neural Networks}
+Learning problems like regression, binary classification and multiclassification normally make use of different types of error functions such as SSE, cross entropy and so on. A few mathematical manipulations can turn the minimization of error functions into the maximization of likelihood functions, which gives a probabilistic interpretation of the Neural Networks. Here we only use SSE function \eqref{error} as an example to show how it works. 
+
+Assuming that the dependent target variables have a Gaussian distribution, for a single target variable $d$ we have
+\begin{equation}
+p(t\mid x,w)=\mathcal N (t\mid z(x,w),\beta^{-1})
+\end{equation}
+
+Given a dataset with $N$ {\it i.i.d.} observations ${\bf x} = (x_1, \cdots, x_n)$, corresponding to target variables ${\bf d}= (d_1, \cdots, d_n)$, then the likelihood function can be written as 
+\begin{equation}
+\mathcal L({\bf w}) =p({\bf d}\mid {\bf x}, {\bf w}) = \prod_{n=1}^N p(t_n\mid x_n, w, \beta)=\frac{\exp(-\beta E_D({\bf w}))}{Z_D(\beta)}\label{likelihood}
+\end{equation}
+where $Z_D=(2\pi/\beta)^N$. Taking negative logarithm of \eqref{likelihood} gives
+\begin{equation}
+ -\ln \mathcal L({\bf w})= E_D({\bf w}) + c \label{equi},
+\end{equation}
+Where $c$ is a constant related to $\beta$ which can be neglected for the purpose of maximizing likelihood function. \eqref{equi} clearly shows that minimizing error function is equivalent to maximizing the likelihood function.
+
+The Neural Network model introduced in the previous section is based on maximum likelihood framework which makes neural computation applicable to broad range of problems. However maximum likelihood framework merely seeks the models fitting the data best, which makes the models innately inevitable to implausible overparameterization and poor generalization. 
+
+Pro's and con's of ML
+\begin{itemize}
+\item Maximum Likelihood method which aims at getting the best fit model for the present data equipped frequetists to estimate parameters in large range of applications, e.g. previously shown standard neural network models.
+\item Regularizers are added for avoiding over-fitting based on ML framework but it is very hard to determine the suitable value of of the regularizing constant. In other words, the frequestist framework gives limited clues of model comparison. 
+\end{itemize}
+
+
+{\it Fun Time, the most sophisticated international problem 2014: "An Iranian using an Italian passport bought a Malaysian Airline ticket from China Southern Airlines tending to immigrate to Germany by flying through Beijing, then disappeared at territorial airspace of Vietnam!"}
+\subsection{Brief Introduction to Bayesian Inference}
+In science, the most elegant research result would be to obtain simple models which can both fit the present data best and more importantly can predict new data best. Maximum likelihood framework presumes the models are certain and fixed, then seeks for the one fitting the present data best. However it often results in overparameterization and poor generalization. For preventing over-fitting, regularization is added to the framework, which is usually an extra term in the cost function or error function. The regularizer penalizes complex models which have large parameter spaces. The idea of regularizing is actually the well-known "Occam's Razor" which promotes simple but working models. When coming to the Bayesian framework, the "Occam's Razor" is naturally embodied, which will be shown shortly. This advantage of Bayesian approach makes it very powerful in learning tasks. And Bayesian learning is widely appreciated in machine learning. We start with some bases of Bayesian analysis then go to some more advanced topics of interest. 
+
+Bayesian analysis has a natural and solid reasoning foundation (see "Fun time below"). It accounts for prior knowledge that we have about what we are dealing with. After some observations or learning, our knowledge will be updated, which can be referred to as posterior. Statistical inference based on Bayesian reasoning outplays classic statistical inference from many aspects since Bayesian inference makes use of all available information (prior knowledge and data) for estimations or predictions. For comparing ML to Bayesian inference, we estimate parameters of univariate Gaussians as an example. 
+
+
+This is the so-called full Bayesian approach where the difficulty for application lies on the calculation of estimate the integral. Alternatively Maximum a Posteriori (MAP) estimate is utilized widely for practical purposes, which always works better than ML since a suitable prior can render the fitting curve smoother thanks to its regularization on complex models. 
+
+
+The effect of prior
+
+
+{\it Fun time: one day after lunch, Markus and Mattias spotted some guy running outside of our windows and immediately realized that he was probably a thief. Then we called the police and alerted everybody to backup data. If our world had been very peaceful and safe before that guy running outside the window (no prior, which is equivalent to frequetists' view of the world), which meant that nobody lost anything and no crimes ever happened before that, then we probably would not be so nervous and call the police immediately since there would be quite a lot reasons for explaining. The guy might just had fun with running around buildings (parkour) or he dropped something from upstairs and had to get it back. To be thief was just one of the possibilities. However the real world is not what frequentists assume but gives us too many lessons which told us that this suspicious guy would probably be a thief. Facing such an event, our brains are naturally doing Bayesian reasoning: we have some priors and observe something then estimate the plausibility which helps us make decisions. Bayes gives a rule about this 
+\begin{equation}
+posterior = \frac{likelihood\ of\ observations\ given\ prior\cdot prior}{Observations}.
+\end{equation}}
+case 1: Too strong prior. After many years of scientific training, we strongly disbelieve supernatural miracles. Even when we observe something that we cannot understand, it is still believed that we are just lacking of knowledge to explain. In this case, the observation comparing to our prior is too weak and cannot update or change our belief about supernatural miracles. 
+
+\subsection{Bayesian Neural Networks}
+ 
+
+\section{20052014}
+After working on real temperature data for at least one month, it is time to summarize what have been done and think about how to tell a complete story. 
+
+Timing of biological events (like flowering) is crucial for the survival and development of living systems, especially for plants. In this work, we intend to understand the flowering-time decision strategy in plants by extracting available information from temperature and photoperiod which are two key environmental factors. 
+
+As well-known by plant biology community, gene \emph{FT} acting as the converging point of information from both temperature and photoperiod expresses the key component of flowering signal which promotes flowering when its concentration in the shoot apical meristem achieves a certain threshold. The main inhibitor of FT, gene \emph{FLC}, can be turned off by a natural process called vernalization, of which the underlying mechanism is an epigenetic switch which processes the information of long term temperature. The activator of FT usually incorporates information from photoperiod. Take long-day plants as an example, when the day length is long enough, CO which processes the information of photoperiod promotes the accumulation of FT. Moreover, several other genes are also involved in the flowering regulatory network for determining the suitable ambient temperature such as FLM. 
+
+Due to various environmental conditions, different plant species and even subspecies have evolved their own unique gene regulatory networks for making optimal decisions to achieve the maximal fitness. Luckily these gene regulatory networks normally share similar information process mechanisms. Our primary goal therefore is to understand how plants make optimal flowering decisions according to different habitats using machine learning techniques. 
+Plants have to adapt to different local environments and climates, therefore we obtained temperature and photoperiod data for several different places around the world from NOAA (\url{http://www.ncdc.noaa.gov/}) and \url{http://ptaff.ca/soleil/?lang=en_CA} respectively. Selected regions or cities: 
+
+\begin{itemize}
+\item Cold region: Norway
+\item Cities with seasonal changes: Beijing, Cologne, Pittsburgh
+\item Cities with high temperature and less seasonal changes: Phoenix, Hawaii, San Francisco
+\end{itemize}
+
+It is previously shown that the neural network as a binary classifier can precisely identify a particular period out of a year such as the most probable flowering month April for Cologne. In order to be more realistic, we fit FLC- and FT-like curves using both temperature and photoperiod data or merely temperature data or photoperiod data. 
+\subsection{Data preparation}
+We take San Francisco as an example to illustrate our data preparation. The customized CSV data file from NOAA includes recordings of daily maximal and minimal temperatures of 57 stations in San Francisco. Each row of the dataset corresponds to one day and contains the name of the station, the date, the daily maximum and minimum. Each station independently recorded daily temperature for tens of years. Therefore it is reasonable to consider the recordings in the same year but at different stations as distinct. Following this assumption, we have over 300 years of daily temperatures which would be sufficient for training. There are a lot of "holes" in the data: many dates are missing, for example, 21th and 22th were not recorded in January then the data jumped from 20th Jan. to 23th Jan.. Another problem is that either the maximal or minimal temperatures of many dates are missing and the missing data are replaced as "-9999". In order to solve these problems and for the simplicity of dealing with data, following adaptations are made for the whole data set:
+\begin{itemize}
+\item Each year is modified to 360 days and each month is modified to 30 days;
+\item We fill the holes automatically by averaging neighbouring two days or just copying the neighbouring date if the hole is less than 10 days. For holes larger than 10 days, the program will locate them and remind the user to fill the holes manually;
+\item For the data points which are "-9999", neighbouring days are also used automatically to replace them if the number of consecutive "-9999" is less than 5, otherwise the user has to change the data manually. 
+\end{itemize}
+Due to bad quality data of some stations (e.g. too many holes, too large holes or too many "-9999"), many data are removed and finally about 165 years of temperature data from San Francisco are available for training. 
+
+The photoperiod data preparation is relatively easier. The daily photoperiod variation data of San Francisco are downloaded from \url{http://ptaff.ca}. The orbit of earth around sun is very stable such that the photoperiod variation remains the same from year to year. Thus we just replicate the downloaded year to 165 years. On the other hand, in reality the effective photoperiod is influenced by weather conditions. To this end, different Gaussian noises are added to these 165 years of replicated photoperiod data. And the strength of noise is adjustable. 
+
+The same preparation has been applied to other cities. Now we can apply these data to train neural networks. 
+
+\subsection{Network Training}
+The vernalization mechanism in plants requires a long term memory of cold temperature, namely several weeks. The required memory length may be depended on local climate or species types. But we are interested in the quantitative memory length from the pointview of information, i.e. in a particular location, how many days of temperature are needed for identifying a particular period of a year. To this end, we set up the neural network as binary classifier to find the approximate memory length. 
+
+Cologne as a temperate city was selected as the target, which has 110 years of temperature data available. The input features for the neural network are $(x_{l1}, \cdots, x_{lk}, x_{h1},\cdots, x_{hk})$, $k=30, 40, 60$ where $x_{li}$ and $x_{hi}$, $i=1,\cdots, k$, stand for daily lowest and highest temperatures respectively. Since it is a binary classification, within one year the output label is $(0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0)$ for $k=30$, $(0, 0, 1, 0, 0, 0, 0, 0, 0)$ for $k=40$ and $(0, 1, 0, 0, 0, 0)$ for $k=60$. We 90 years out of 110 years for network training and the rest for network predicting. The predicting results are shown in figure~\ref{fig: day30},~\ref{fig: day40} and ~\ref{fig: day60}. It is observed that one month of temperatures as input feature is insufficient for classifying the desired period out of a year. As the number of input features increases to 40 or more, the neural network can make very precise predictions. 
+
+\begin{figure}[H]
+\centering
+\includegraphics[scale = 0.4]{confusion28daysTrainscg.pdf}
+\caption{The misclassification rate based on one month of temperature is 44\%. The number of input feature is insufficient to classify the desired period.}
+\label{fig: day30}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[scale = 0.4]{confusion42daysTrainscg.pdf}
+\caption{By increasing input days the accuracy is significantly improved. Accuracy based on 40 days is 93.6\%.}
+\label{fig: day40}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[scale = 0.4]{confusion60daysTrainscg.pdf}
+\caption{As input days are increasing, the accuracy remains high. Here shows the accuracy based 60days.}
+\label{fig: day60}
+\end{figure}
+
+The binary classification results agree with biological fact that the vernalization process requires about 6 weeks of cold temperature. Now we move a step further using the neural network to fit FT- and FLC-like curves for different cities. In the binary classification, we just equally divide one year into 12 months or else. However this is not realistic since plants cannot jump one month to the next. Therefore the input features are organized as
+\begin{equation*}
+\begin{pmatrix}
+x_{1} & x_{1+m} & x_{1+2m} & \cdots\\
+x_{2} & x_{2+m} & x_{2+2m} & \cdots\\
+\vdots & \vdots & \vdots & \cdots\\
+x_n & x_{n+m} & x_{n + 2m} & \cdots
+\end{pmatrix},
+\end{equation*}
+where $n$ is the number of input features and $m$ is the number of new features comparing to the previous column. Correspondingly, the output label associated with each column is constructed according to the real changes of FT and FLC in vernalization-required Arabidopsis. The FT- and FLC-like curves are shown in figure \ref{fig:ftflc}. 
+
+\begin{figure}[H]
+\centering
+\includegraphics{FTFLC.pdf}
+\caption{The idealized expression levels of FLC and FT}
+\label{fig:ftflc}
+\end{figure}
+
+1. Temperate Cities
+Now the data setup is ready for training the neural networks. We typically choose $n=40$, $m=1$ for temperature and $n=1, 2, 3$, $m=1$ for photoperiod of temperate cities: Cologne, Pittsburgh, Beijing. Long term memory of temperature plays a key role in the curve fitting however it is observed that only temperatures as input feature in Cologne and Pittsburgh leads to some significant misfits. Once one or three days of photoperiod changes can dramatically reduce the misfits. 
+
+\begin{figure}[H]
+\centering
+\includegraphics[scale = 1]{CologneT90-br.pdf}
+\caption{Cologne: 90 years of temperature of Cologne are used for training with setup of $n=40$, $m=1$, i.e. 40 days of temperature as input features.}
+\label{fig:cologneT}
+\end{figure}
+\begin{figure}[H]
+\centering
+\includegraphics[scale = 0.6]{CologneT90-br-3d.pdf}
+\caption{Cologne: Both temperature and photoperiod are set for input features, 40 days temperature and 3 days photoperiod. }
+\label{fig:cologneTD}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[scale = 0.6]{BeijingT55P7-lm.pdf}
+\caption{Beijing: 40 days temperature as input feature can make very precise regression.}
+\label{fig:beijing}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[scale = 0.25]{PittsburghT210-br4.pdf}
+\caption{Pittsburgh: 40 days temperature as input feature can make very precise regression.}
+\label{fig:pittsT}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[scale = 0.6]{PittsburghT210-scg-1d.pdf}
+\caption{Pittsburgh: 40 days temperature as input feature can make very precise regression.}
+\label{fig:pittsTD}
+\end{figure}
+
+2. Cold region
+Both temperature and photoperiod variation in regions around Oslo. One station located about 200km north from Oslo is selected as our temperature data source. It is observed that both temperature and photoperiod can make very precise predictions. 
+\begin{figure}[H]
+\centering
+\includegraphics[scale = 0.6]{NorwT51-br.pdf}
+\caption{Norway: 40 days temperature as input feature can make very precise regression.}
+\label{fig:NorwayT}
+\end{figure}
+
+3. Regions with rare seasonal temperature variations
+Regions as San Francisco and Hawaii have very similar temperature through every whole year, which means very few information can be extracted from their temperature. This can be also seen from the predicting results which generalize very poorly. 
+\begin{figure}[H]
+\centering
+\includegraphics[scale = 0.3]{Hawaii.pdf}
+\caption{Hawaii: 40 days temperature as input features .}
+\label{fig:HawaiiT}
+\end{figure}
+\begin{figure}[H]
+\centering
+\includegraphics[scale = 0.6]{SanFT135-scg1.pdf}
+\caption{San Francisco: 40 days temperature as input features .}
+\label{fig:sanT}
+\end{figure}
+
+
+
+\subsection{Questions}
+1. The core genetic regulatory network for flowering time exists in all plants?
+
+2. Plants are divided into long-day, short-day and neutral classes. What is the role of temperature or photoperiod on flowering time decision?
+
+3. Distributions of flowering time of different place across the world?
+\section{Interesting metaphor about Bayesian statistics}
+I liken Bayesianism to a very high-quality chef knife, a stockpot, and a sautee pan; frequentism is like a kitchen full of As-Seen-On-TV tools like banana slicers and pasta pots with holes in the lid for easy draining. If you're a practiced cook with lots of experience in the kitchen--indeed, in your own kitchen of substantive knowledge, which is clean and organized and you know where everything is located--you can do amazing things with your small selection of elegant, high-quality tools. Or, you can use a bunch of different little ad-hoc* tools, that require zero skill to use, to make a meal that's simple, really not half bad, and has a couple basic flavors that get the point across. You just got home from the data mines and you're hungry for results; which cook are you?
+
+*Bayes is just as ad-hoc, but less transparently so. How much wine goes in your coq au vin? No idea, you eyeball it because you're a pro. Or, you can't tell the difference between a Pinot Grigio and a Pinot Noir but the first recipe on Epicurious said to use 2 cups of the red one so that's what you're going to do. Which one is more "ad-hoc?"
+
+\section{A few things to know about machine learning}
+\begin{itemize}
+\item Bishop, 2006, minimizing the error function to determine the learned model is the general idea of machine learning, however, usually the limited data size cannot provide enough valuable information for fixing the parameters of model which is designed to capture all the features in the dataset, in other words, the noise in data can result in over-fitting based on a model with improper complexity for the problem of interest. The valid method should determine the complexity of the model for the specific problem. 
+\item All machine learning approach can be broken down into: 1. Representation (of learner); 2. Evaluation (of learner); 3. Optimization
+\item The fundamental goal of machine learning is to get the best generalization.
+\item No free lunch theorem states that for certain type of mathematical problems, the computing cost of find a solution, averaged over all problems in the class, is the same for any solution method. In machine learning language, it can be rephrased as "no learner can beat random guessing over all possible functions to be learned." MY question: obviously sometimes one algorithm can significantly reduce the computing cost of a certain type of problem, then how to explain?
+\subitem UPDATED WITH ANSWER: The source of a specific model to be powerful is simply that this model fits the problem we are working on! In a formal way, all models are built on conditions or assumptions, if the problem-dependent data satisfies a model's assumptions then this model would work perfectly. And in practice, it is very easy to construct problems to make a model fail. 
+
+\item Machine learning is not magic; it cannot get something from nothing. What it does is get more from less. It is more like farming, which lets nature do most of the work. Farmers combine seeds and nutrients to grow crops and learners combine knowledge and data to grow programs.  
+\end{itemize}
+
+
+
+\section{Independence, orthogonality, correlation}
+
+
+\section{Statistical concepts}
+
+\begin{itemize}
+\item $p$-value is the probability of rejecting null hypothesis, given that the null hypothesis is true (probability of false positive/false finding). A $p$-value over 0.5 means that in a statistical test, one would reject the truth with the probability higher than 50\%. 
+\item An estimator is said to be "consistent" when it converges to the truth as the sample size gets larger. Otherwise it is "inconsistent".
+\item The ANOVA is an inferential statistic that can be used to compare two or more means. To determine whether the difference between groups is large enough to minimize the chance variance as an alternative explanation, one must determine the statistical significance of difference between them. In plain words, ANOVA is used for investigating the correlation between IV and DV, i.e. to see if variation in IV results in the variation in DV with carefully determining the statistical significance to avoid the effect of variances. 
+\item One typically accepts a difference between the sample means as statistically significant if it has a probabiliyt of less than 5 percent of occurring by chance.  
+
+\item With this figure, one will remember the difference between Type I and Type II errors. 
+\begin{figure}
+\centering
+\includegraphics[scale=0.7]{Type-I-and-II-errors.jpg}
+\caption{Pregnancy example for error types.}
+\label{fig:type-errors}
+\end{figure}
+
+\end{itemize}
+
+\section*{Correlation between highly expressed gene and ribosomal sequence}
+
+The primary aim of this project is to find out or identify how the highly expressed genes (or associated codons) are correlated to ribosome binding efficiency (or preference). 
+
+The data: 1) Amino acid sequence and 2) mRNA sequence of highly expressed genes from 2000 bacteria. 
+
+the changes in mRNA sequence result in changes in ribosome binding efficiency. 
+
+\section*{Review on "Topological sensitivity analysis for systems biology"}
+The basic idea of this paper is that for complex systems, it is common to have many uncertainties while modeling it, thus the uncertainties of models should be considered as well as the uncertainties of parameters of a specific model. For example, for the same systems, different models with different interactions among variables and different parameter values can give the same dynamical behavior. This is verified in the paper by examples. 
+
+I briefly summarize the methodology here. Having an experimental data set for a system, Gaussian process regression is deployed to account for uncertainties in model space. The corresponding Gaussian process consists of a mean function and a covariance function, which defines the models space. Once the mean and variance functions are determined from the data, one can generate synthetic data from the process. For each synthetic data, one can perform parameter inference techniques to determine a specific model. Consequently, a lot of models can be generated from the process. Then further model selection theories can be applied. 
+
+\section*{Understanding convolution}
+Studied convolution very long time ago and not understood it from then. Today read about this nice blog on convolution, it is time to summarize and understand it. \url{http://colah.github.io/posts/2014-07-Understanding-Convolutions/}
+
+
+
+
+
+\section*{Task list and tool list for deep learning on sequencing data}
+
+The data: 
+\begin{itemize}
+\item Labeled data: Church's data for supervised learning, it is small
+\item Unlabeled data: The genome sequencing data of bacteria
+\end{itemize}
+
+The feature space:
+\begin{itemize}
+\item RNA folding structure, features related to free energy and secondary structure
+\item Correlation between amino acid sequence of ribosomal protein (highly expressed proteins) and RNA sequence helps to reduce the input dimensions 
+\item Special motifs in RNA sequence is a strong signal for translation rate. we need to find out the distribution of random generated motifs and get the informative motifs as input features for supervised learning
+\end{itemize}
+
+The training model:
+\begin{itemize}
+\item Stacked auto-encoder for unlabeled data for automatically extracting features
+\item Convolutional neural net combines the extracted features from auto-encoder with motif features and other features to fit the labeled data. 
+\end{itemize}
+
+Tools 
+\begin{itemize}
+\item Python: Theano for setting up the pipeline of learning
+\item MATLAB: Deeplearning Toolbox for testing ideas
+\item Biopython: easy to calculate the frequency of given motifs
+\item GPU computing, Theano is able to run on both Nvidia and AMD platforms
+\end{itemize}
+
+\section*{10.04.2015}
+After a few months working deep learning for RNA sequence analysis, many concepts, tools, and techniques become more and more clear, and small-step progress is moving our project forward. Daily plan and summary are key to keep track of progress and assure efficiency. 
+
+Achievements:
+\begin{itemize}
+\item Theano programs of logistic regression, multilayer perceptron and convolutional neural network are digested. 
+\item With Generated sequences containing certain motifs, we are able to classify them into the right classes with almost 100\% accuracy. 
+\item It is puzzling that we are not able to classify folding matrices into different free energy classes by MLP or convolutional networks. 
+\item Even not able to classify matrices with random entries but target value in the up corner.
+\end{itemize}
+
+Tasks:
+\begin{itemize}
+\item Having a bug free program for MLP, then we should be able to classify the folding matrices.
+\item Statistical analysis to find out unknown special motifs
+\item unsupervised learning for finding motifs
+\item Understanding Theano tutorial on DBN and RBM
+\item Be able to write program for convolutional DBN.
+\end{itemize}
+
+\section*{24.06.2015}
+\begin{itemize}
+\item Before testing the expression classes, one has to set up a simple autoencoder to see how much it can recover the input data to make sure the information loss is acceptable. 
+\item 
+\end{itemize}
+
+\section{Summary of the project 01.07.2015}
+Properties like decomposing highly nonlinear mapping to hierarchical computing elements, integrating learned features from previous layers render deep learning models able to capture good representations of input features and learn highly nonlinear mapping from input to output. Our project tends to learn gene expression levels from mRNA sequence, which is a highly nonlinear problem. Many known and unknown factors regulate the expressions. We start with the best of our knowledge about those factors to construct input features for different learning models. In other words, the prior knowledge should be incorporated into building models, which is the key to success. We are still at the stage of constructing proper input features such that the models can bring good performance. 
+
+The success of deep convolutional networks on image recognition are largely due to the locality of objects in images, which makes it possible to learn complex features from simple features. However the folding structures of RNAs lack of such locality, which results in the difficulty in applying the-state-of-the-art deep learning models. 
+
+Despite of the difficulties, we managed various ways to construct input features which incorporate our prior knowledge about the impact of special motifs and folding structures on expressions. 
+
+\subsection{Data in hand}
+Khosuri et. al \cite{} has produced some well-recorded labeled data, which includes measured expressions from around 14,000 sequences constructed from two types of promoters, four types of Ribosomal binding sites, first 11 codons of 147 genes and their 13 variants. Due to its limited amount, we first have to learn good representations of sequences from the whole genomic data of bacteria, which includes around 2000 organisms, then use it to fine tune our model parameters. 
+
+\subsection{Folding matrix as input for convnet}
+A very informative and comprehensive representation is the folding matrix of the corresponding sequences. 
+
+
+\subsection{Focusing on the Khosuri data}
+Two types classification
+
+regression
+
+Using only the high promoter, to do the classification and regression
+
+find out where the key information locates, i.e. determine the parts of sequences, of which the free energies are important. 
+
+\section{Bayesian probabilistic matrix factorization}
+To improve the construction of genetic interactions from Charles Boone's data, we need to plot several things.
+\begin{itemize}
+\item Extract the $\epsilon$ matrix from Boone's data
+\item Perform SVD on $\epsilon$ matrix to get vectors $u$
+\item Feed the $\epsilon$ matrix to Bayesian PMF program to get vectors $\u'$
+\item Plot $u$ and $u'$ using tSNE to compare with the plotting in Boone's paper and from Word2Vec
+\end{itemize}
+\subsection{Collaborative filtering}
+Taking movie recommending system as an example, suppose the user $i$ has his own preference vector $\theta^i$ for different kinds of movies, and movie $j$ has its own feature vector $x^j$, then a recommending system should be able to find the most relevant movie for a user who shows his preference, formally which means that having the preference vector $\theta$, the system should find a movie whose feature vector $x$ which maximizes the inner product $<x, \theta>$. To build such a system, the feature vectors can be learned from collected data, which is the rating matrix $R_{n\times m}$ where $R_{ij}$ is the rating score for movie $j$ given by user $i$, there are $n$ users and $m$ movies. Meanwhile one can collect the preference vector of each user. This is a very rough interpretation of collaborative filtering (might need be revised).
+\subsection{}
+
+
+\section{Proposal Summary}
+What is the relationship between genotypes and phenotypes. In diverse fields such as personalized medicine, bio-engineering and fundamental biology, this question has remained puzzling for even 50 years after Watson and Crick identified the structure of DNA. 
+
+\begin{thebibliography}{99}
+
+\bibitem{turck2008}
+Turck, Franziska, Fabio Fornara, and George Coupland. "Regulation and identity of florigen: FLOWERING LOCUS T moves center stage." Annu. Rev. Plant Biol. 59 (2008): 573-594.
+
+\bibitem{coupland2012}
+Andres, Fernando, and George Coupland. "The genetic basis of flowering responses to seasonal cues." Nature Reviews Genetics 13.9 (2012): 627-639.
+
+\bibitem{mendoza1998}
+Mendoza, Luis, and Elena R. Alvarez-Buylla. "Dynamics of the Genetic Regulatory Network for Arabidopsis thaliana Flower Morphogenesis." Journal of theoretical biology 193.2 (1998): 307-319.
+
+\bibitem{satake2013}
+Satake, Akiko, et al. "Forecasting flowering phenology under climate warming by modelling the regulatory dynamics of flowering-time genes." Nature communications 4 (2013).
+
+\bibitem{lee2013}
+Lee, Jeong Hwan, et al. "Regulation of Ambient Temperature-Responsive Flowering by MADS-Box Transcription Factor Repressor Complexes." Science (New York, NY) (2013).
+
+\bibitem{wilczek2009}
+Wilczek, A. M., Roe, J. L., Knapp, M. C., Cooper, M. D., Lopez-Gallego, C., Martin, L. J., � Schmitt, J. (2009). Effects of genetic perturbation on seasonal life history plasticity. Science (New York, N.Y.), 323(5916), 930�4. doi:10.1126/science.1165826
+
+\bibitem{chew2012}
+Chew, Y. H., Wilczek, A. M., Williams, M., Welch, S. M., Schmitt, J., and Halliday, K. J. (2012). An augmented Arabidopsis phenology model reveals seasonal temperature control of flowering time. The New phytologist, 194(3), 654�65. doi:10.1111/j.1469-8137.2012.04069.x
+
+\bibitem{pose2013}
+Pose, D., Verhage, L., Ott, F., Yant, L., Mathieu, J., Angenent, G. C., � Schmid, M. (2013). Temperature-dependent regulation of flowering by antagonistic FLM variants. Nature. doi:10.1038/nature12633
+
+\end{thebibliography}
+
+%\addcontentsline{toc}{chapter}{\numberline{}Bibliography}
+%\include{biblio}
+
+\end{document}
