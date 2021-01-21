@@ -33,7 +33,7 @@ export PS1="%n@%m:%~%# "
 # Enable 256 color to make auto-suggestions look nice
 export TERM="xterm-256color"
 
-export PATH=/usr/local/texlive/2018/bin/x86_64-linux:$PATH
+# export PATH=/usr/local/texlive/2018/bin/x86_64-linux:$PATH
 
 # Load local bash/zsh compatible settings
 _INIT_SH_NOFUN=1
@@ -153,9 +153,8 @@ alias open="gvfs-open"
 alias gj="shutdown now"
 alias cq=reboot
 alias si="sudo apt install"
-alias sovpn="sudo openvpn --config ~/utility/vpn/HHU-VPN.ovpn"
-alias syncbox='~/.dropbox-dist/dropboxd &'
-alias python='/usr/bin/python3.6m'
+# alias syncbox='~/.dropbox-dist/dropboxd &'
+# alias python='/usr/bin/python3.6m'
 
 # options
 unsetopt correct_all
