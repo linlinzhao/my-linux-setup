@@ -1,9 +1,10 @@
 set nocompatible
 call plug#begin('~/.local/share/nvim/plugged')
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle'  }
+"for deoplete to work, pip install pynvim is needed
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins'  }
 "Plug 'donRaphaco/neotex', { 'for': 'tex'  }
-Plug 'lervag/vimtex'
+"Plug 'lervag/vimtex'
 Plug 'rafi/awesome-vim-colorschemes'
 Plug 'zchee/deoplete-jedi'
 Plug 'scrooloose/syntastic'
@@ -17,16 +18,16 @@ Plug 'ervandew/supertab'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'joshdick/onedark.vim'
-function! BuildComposer(info)
-  if a:info.status != 'unchanged' || a:info.force
-    if has('nvim')
-      !cargo build --release
-    else
-      !cargo build --release --no-default-features --features json-rpc
-    endif
-  endif
-endfunction
-Plug 'euclio/vim-markdown-composer', { 'do': function('BuildComposer') }
+"function! BuildComposer(info)
+"  if a:info.status != 'unchanged' || a:info.force
+"    if has('nvim')
+"      !cargo build --release
+"    else
+"      !cargo build --release --no-default-features --features json-rpc
+"    endif
+"  endif
+"endfunction
+"Plug 'euclio/vim-markdown-composer', { 'do': function('BuildComposer') }
 call plug#end()
 
 nnoremap <space> za
@@ -72,7 +73,7 @@ let g:comfortable_motion_scroll_down_key = "j"
 let g:comfortable_motion_scroll_up_key = "k"
 "let g:neotex_enabled=2
 let g:deoplete#enable_at_startup=1
-let g:python_host_prog='/usr/bin/python2.7'
+"let g:python_host_prog='/usr/bin/python2.7'
 let g:python3_host_prog='/usr/bin/python'
 let g:tex_flavor='latex'
 let g:Tex_MultipleCompileFormats='pdf'
